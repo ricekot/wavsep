@@ -9,6 +9,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - Basic Maven build.
 - Docker support.
 - Auto initialise DB.
+- Simple CI build.
 
 ### Changed
 - Docs to reflect adoption by ZAP team.
