@@ -16,7 +16,6 @@ import org.apache.commons.dbcp.PoolingDriver;
 import org.apache.commons.dbcp.PoolableConnectionFactory;
 import org.apache.commons.dbcp.DriverManagerConnectionFactory;
 
-import com.mysql.jdbc.PreparedStatement;
 import com.sectooladdict.constants.DatabaseConstants;
 
 /**

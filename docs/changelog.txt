@@ -1,3 +1,7 @@
+This is the original changelog from https://github.com/sectooladdict/wavsep
+
+Changes made since the adoption by the ZAP Team are recorded in the CHANGELOG.md file at the top level.
+
 ===============
 = version 1.2 =
 ===============
