@@ -21,4 +21,8 @@ curl --data "username=root&password=root&host=localhost&port=3306&wavsep_usernam
 echo Db Initialised
 
 # Keep container running
-tail -f /dev/null
+if [[ -n "${DEBUG}" ]]; then
+  tail -f /opt/tomcat/logs/catalina.out
+else
+  tail -f /dev/null
+fi

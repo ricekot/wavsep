@@ -20,6 +20,12 @@ To build and run WAVSEP run the following commands:
 
 WAVSEP will then be accessible via [http://localhost:8080/wavsep/](http://localhost:8080/wavsep/)
 
+## Debugging
+
+To show the output of WAVSEP run it using the command:
+
+* `docker run -e DEBUG=y --rm -it -p 8080:8080 -p 3306:3306 zaproxy/wavsep`
+
 ## Copyright
 
 WAVSEP - The Web Application Vulnerability Scanner Evaluation Project.
