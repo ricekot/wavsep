@@ -3,6 +3,11 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## 2025-09-02
+
+### Changed
+- Unvalidated-Redirect/Redirect-FalsePositives-GET/Case09... now uses the default host from the first configured engine (identified via JMX) instead of the requested host name (which could have been from a manipulated Host header).
+
 ## 2025-08-30
 - Imported OS Command Injection tests from [Reinforced Wavsep](https://github.com/luigiurbano/Reinforced-Wavsep) at commit [962d566](https://github.com/luigiurbano/Reinforced-Wavsep/commit/962d566ebe51a3f64f772b6c1856d99f1150ba4a).
 
