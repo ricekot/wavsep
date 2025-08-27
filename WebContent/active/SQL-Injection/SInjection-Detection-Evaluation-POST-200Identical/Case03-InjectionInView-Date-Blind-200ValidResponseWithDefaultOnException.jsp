@@ -29,16 +29,12 @@ if (request.getParameter("transactionDate") == null) {
 <%
 } 
 else {  	   
-	Connection conn = null;
-	
     long defaultTransId = 0;
     long defaultTransSum = 0;
     
-    try {
+    try (Connection conn = ConnectionPoolManager.getConnection()) {
     	String transactionDate = request.getParameter("transactionDate");
 
-    	conn = ConnectionPoolManager.getConnection();
-     
         System.out.print("Connection Opened Successfully\n");
         
       //restrict the output presented to the first user output
@@ -95,9 +91,6 @@ else {
  	 	
 	  	out.flush();
 	  	
-	  	if(conn != null) {
-        	ConnectionPoolManager.closeConnection(conn);
-        }
 	  	
     } catch (Exception e) {
 		out.println("<TR>");
@@ -114,9 +107,6 @@ else {
   	        System.out.println("Exception details: " + e);
         } 
 
-		if(conn != null) {
-        	ConnectionPoolManager.closeConnection(conn);
-        }
     	
     }
  	 	

@@ -21,12 +21,9 @@ if (request.getParameter("msgid") == null) {
 <%
 } 
 else {
-	Connection conn = null;
-    try {
+    try (Connection conn = ConnectionPoolManager.getConnection()) {
   	    String msgid = request.getParameter("msgid");
 
-  	    conn = ConnectionPoolManager.getConnection();
-     
   	    System.out.print("Connection Opened Successfully\n");
 
  	    String SqlString = 
@@ -38,17 +35,11 @@ else {
  		 
  		out.println("Query executed");
 	  	out.flush();
-	  	if(conn != null) {
-        	ConnectionPoolManager.closeConnection(conn);
-        }
     } catch (Exception e) {
         out.println("Exception details: " + e);
         if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
   	        System.out.println("Exception details: " + e);
         }  
-        if(conn != null) {
-        	ConnectionPoolManager.closeConnection(conn);
-        }
     }
 } //end of if/else block
 %>

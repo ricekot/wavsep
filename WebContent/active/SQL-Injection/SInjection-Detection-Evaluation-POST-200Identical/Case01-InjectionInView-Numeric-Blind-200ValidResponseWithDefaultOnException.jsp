@@ -35,18 +35,14 @@ if (request.getParameter("transactionId") == null) {
 <%
 } 
 else {
-	Connection conn = null;
-	
     long defaultLong1 = 0;
     long defaultLong2 = 0;
     String defaultString = null;
     java.sql.Date defaultDate = null;
     
-    try {
+    try (Connection conn = ConnectionPoolManager.getConnection()) {
   	    String transactionId = request.getParameter("transactionId");
 
-  	    conn = ConnectionPoolManager.getConnection();
-     
         System.out.print("Connection Opened Successfully\n");
 
         //restrict the output presented to the first user output
@@ -118,9 +114,6 @@ else {
  	 	
 	  	out.flush();
 	  	
-	  	if(conn != null) {
-        	ConnectionPoolManager.closeConnection(conn);
-        }
 	  	
     } catch (Exception e) {
  		out.println("<TR>");
@@ -143,9 +136,6 @@ else {
   	        System.out.println("Exception details: " + e);
         } 
 
-		if(conn != null) {
-        	ConnectionPoolManager.closeConnection(conn);
-        }
 
     }
  	 	

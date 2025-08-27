@@ -22,16 +22,13 @@ if (request.getParameter("orderby") == null) {
 <%
 } 
 else {
-	Connection conn = null;
-    try {
+    try (Connection conn = ConnectionPoolManager.getConnection()) {
   	    String order = request.getParameter("orderby");
 
   	    if (InputValidator.validateSemicolon(order)) {
   	        throw new Exception("Invalid Characters in Input: Semicolon (;)");
   	    }
   	    
-        conn = ConnectionPoolManager.getConnection();
-     
         System.out.print("Connection Opened Successfully\n");
 
  	    String SqlString = 
@@ -79,17 +76,11 @@ else {
  	 	
 	  	out.flush();
 	  	
-	  	if(conn != null) {
-        	ConnectionPoolManager.closeConnection(conn);
-        }
     } catch (Exception e) {
         out.println("Exception details: " + e);
         if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
   	        System.out.println("Exception details: " + e);
         } 
-        if(conn != null) {
-        	ConnectionPoolManager.closeConnection(conn);
-        }
     }
 } //end of if/else block
 %>
