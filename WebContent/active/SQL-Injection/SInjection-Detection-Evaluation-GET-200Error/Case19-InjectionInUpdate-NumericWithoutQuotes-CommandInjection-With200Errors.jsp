@@ -22,17 +22,14 @@ if (request.getParameter("msgid") == null) {
 <%
 } 
 else {
-	Connection conn = null;
-    try {
+    try (Connection conn = ConnectionPoolManager.getConnection()) {
   	    String msgid = request.getParameter("msgid");
 
   	    if (InputValidator.validateQuotes(msgid)) {
   	    	out.println("Invalid Input");
   	    }
   	    else {
-  	  	    conn = ConnectionPoolManager.getConnection();
-     
-  	  	    System.out.print("Connection Opened Successfully\n");
+  	  	  	    System.out.print("Connection Opened Successfully\n");
 
  	    	String SqlString = 
 	            "UPDATE messages " +
@@ -45,17 +42,11 @@ else {
  		
   	    }
 	  	out.flush();
-	  	if(conn != null) {
-        	ConnectionPoolManager.closeConnection(conn);
-        }
     } catch (Exception e) {
         out.println("Exception details: " + e);
         if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
   	        System.out.println("Exception details: " + e);
         } 
-        if(conn != null) {
-        	ConnectionPoolManager.closeConnection(conn);
-        }
     }
 } //end of if/else block
 %>

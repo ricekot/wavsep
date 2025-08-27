@@ -23,8 +23,7 @@ if (request.getParameter("transactionDate") == null) {
 <%
 } 
 else {
-	Connection conn = null;
-    try {
+    try (Connection conn = ConnectionPoolManager.getConnection()) {
   	    String transactionDate = request.getParameter("transactionDate");
 
   	    if (InputValidator.validateQuotes(transactionDate)) {
@@ -34,8 +33,6 @@ else {
 	    	throw new Exception("Invalid Input");
 	    }
   	    
-  	  	conn = ConnectionPoolManager.getConnection();
-     
         System.out.print("Connection Opened Successfully\n");
 
  	    String SqlString = 
@@ -48,18 +45,12 @@ else {
  		 
  		out.println("Query executed");
  		
- 		if(conn != null) {
-        	ConnectionPoolManager.closeConnection(conn);
-        }
-	  	out.flush();
+ 	  	out.flush();
     } catch (Exception e) {
 
     	if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
   	        System.out.println("Exception details: " + e);
     	} 
-    	if(conn != null) {
-        	ConnectionPoolManager.closeConnection(conn);
-        }
         out.println("Update failed");
     }
 } //end of if/else block

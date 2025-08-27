@@ -24,8 +24,7 @@ if (request.getParameter("username") == null
 <%
 } 
 else {
-	Connection conn = null;
-    try {
+    try (Connection conn = ConnectionPoolManager.getConnection()) {
   	    String username = request.getParameter("username");
   	    String password = request.getParameter("password");
   	    
@@ -36,8 +35,6 @@ else {
 	    	throw new SQLException("Invalid Input for SQL");
 	    }
 
-  	  	conn = ConnectionPoolManager.getConnection();
-     
         System.out.print("Connection Opened Successfully\n");
 
  	    String SqlString = 
@@ -55,28 +52,19 @@ else {
  	 		out.println("login failed");
  	 	}
  	 	
- 		if(conn != null) {
-        	ConnectionPoolManager.closeConnection(conn);
-        }
-	  	out.flush();
+ 	  	out.flush();
 	  	
     } catch (SQLException e) {
     	if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
   	        System.out.println("Exception details: " + e);
         } 
 
-		if(conn != null) {
-        	ConnectionPoolManager.closeConnection(conn);
-        }
         response.sendError(500,"Exception details: " + e);
     } catch (Exception e) {
     	if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
   	        System.out.println("Exception details: " + e);
         } 
 
-		if(conn != null) {
-        	ConnectionPoolManager.closeConnection(conn);
-        }
         response.sendError(500,"Exception details: " + e);
     }
 } //end of if/else block

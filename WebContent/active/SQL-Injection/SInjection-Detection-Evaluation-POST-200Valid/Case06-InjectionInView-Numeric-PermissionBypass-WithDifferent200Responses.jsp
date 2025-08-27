@@ -24,13 +24,10 @@ if (request.getParameter("transactionId") == null) {
 <%
 } 
 else {
-	Connection conn = null;
-    try {
+    try (Connection conn = ConnectionPoolManager.getConnection()) {
   	    String transactionId = request.getParameter("transactionId");    
   	    String currentUserId="1";
 
-  	    conn = ConnectionPoolManager.getConnection();
-     
         System.out.print("Connection Opened Successfully\n");
 
       //restrict the output presented to the first user output
@@ -87,9 +84,6 @@ else {
  		out.println("</TABLE>");
  	 	
 	  	out.flush();
-	  	if(conn != null) {
-        	ConnectionPoolManager.closeConnection(conn);
-        }
 	  	
     } catch (Exception e) {
         out.println("Information is unavailable");
@@ -98,9 +92,6 @@ else {
   	        System.out.println("Exception details: " + e);
         } 
 
-		if(conn != null) {
-        	ConnectionPoolManager.closeConnection(conn);
-        }
     }
  	 	
 } //end of if/else block

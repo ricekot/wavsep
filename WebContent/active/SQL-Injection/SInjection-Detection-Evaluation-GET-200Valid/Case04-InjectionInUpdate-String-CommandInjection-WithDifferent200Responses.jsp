@@ -21,12 +21,9 @@ if (request.getParameter("msg") == null) {
 <%
 } 
 else {
-	Connection conn = null;
-    try {
+    try (Connection conn = ConnectionPoolManager.getConnection()) {
   	    String msg = request.getParameter("msg");
 
-  	    conn = ConnectionPoolManager.getConnection();
-     
         System.out.print("Connection Opened Successfully\n");
 
  	    String SqlString = 
@@ -39,9 +36,6 @@ else {
  		out.println("Query executed");
 	  	out.flush();
 	  	
-	  	if(conn != null) {
-        	ConnectionPoolManager.closeConnection(conn);
-        }
     } catch (Exception e) {
         out.println("Information is unavailable");
         
@@ -49,9 +43,6 @@ else {
   	        System.out.println("Exception details: " + e);
         } 
 
-		if(conn != null) {
-        	ConnectionPoolManager.closeConnection(conn);
-        }
 
     }
 } //end of if/else block

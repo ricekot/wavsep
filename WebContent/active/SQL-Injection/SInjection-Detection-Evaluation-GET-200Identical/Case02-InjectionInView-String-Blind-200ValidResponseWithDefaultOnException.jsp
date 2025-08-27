@@ -28,16 +28,12 @@ if (request.getParameter("username") == null) {
 <%
 } 
 else {  	    
-	Connection conn = null;
-	
     long defaultUserId = 0;
     String defaultUserName = null;
     
-    try {
+    try (Connection conn = ConnectionPoolManager.getConnection()) {
     	String username = request.getParameter("username");
 
-    	conn = ConnectionPoolManager.getConnection();
-     
         System.out.print("Connection Opened Successfully\n");
         
       //restrict the output presented to the first user output
@@ -91,9 +87,6 @@ else {
  	 	
 	  	out.flush();
 	  	
-	  	if(conn != null) {
-        	ConnectionPoolManager.closeConnection(conn);
-        }
 	  	
     } catch (Exception e) {
 		out.println("<TR>");
@@ -110,9 +103,6 @@ else {
   	        System.out.println("Exception details: " + e);
         } 
 
-		if(conn != null) {
-        	ConnectionPoolManager.closeConnection(conn);
-        }
     	
     }
  	 	
