@@ -52,5 +52,5 @@
 		vulnerability = VulnerabilityType.RFI;
 
 	%>
-	
+
 	<%@ include file="inclusion-logic.jsp"%>

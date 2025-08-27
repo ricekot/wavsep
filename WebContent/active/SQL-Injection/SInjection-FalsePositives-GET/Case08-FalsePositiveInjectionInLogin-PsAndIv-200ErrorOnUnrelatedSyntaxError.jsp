@@ -13,14 +13,14 @@
 
 <%
 if (request.getParameter("username") == null
-	&& request.getParameter("password") == null	) {
+    && request.getParameter("password") == null	) {
 %>
-	Login Page:<br><br>
-	<form name="frmInput" id="frmInput" action="Case08-FalsePositiveInjectionInLogin-PsAndIv-200ErrorOnUnrelatedSyntaxError.jsp" method="POST">
-		<input type="text" name="username" id="username"><br>
-		<input type="password" name="password" id="password"><br>
-		<input type=submit value="submit">
-	</form>
+    Login Page:<br><br>
+    <form name="frmInput" id="frmInput" action="Case08-FalsePositiveInjectionInLogin-PsAndIv-200ErrorOnUnrelatedSyntaxError.jsp" method="POST">
+        <input type="text" name="username" id="username"><br>
+        <input type="password" name="password" id="password"><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
@@ -30,25 +30,25 @@ else {
 
         System.out.print("Connection Opened Successfully\n");
 
- 	    String SqlString = 
+        String SqlString = 
             "SELECT username, password " +
- 	        "FROM users " +
- 	        "WHERE aab username=?" +
- 	        " AND password=?";
- 		PreparedStatement pstmt = conn.prepareStatement(SqlString);
- 		pstmt.setString(1,username);
- 		pstmt.setString(2,password);
- 		//error: since the syntax contain invalid characters
- 		//AND since the method is executed with the SqlString parameter
- 		ResultSet rs = pstmt.executeQuery(SqlString); 
- 		 
- 		if(rs.next()) {
- 			out.println("hello " + rs.getString(1));
- 	    } else {
- 	 		out.println("login failed");
- 	 	}
- 	 	
- 	  	out.flush();
+            "FROM users " +
+            "WHERE aab username=?" +
+            " AND password=?";
+        PreparedStatement pstmt = conn.prepareStatement(SqlString);
+        pstmt.setString(1,username);
+        pstmt.setString(2,password);
+        //error: since the syntax contain invalid characters
+        //AND since the method is executed with the SqlString parameter
+        ResultSet rs = pstmt.executeQuery(SqlString); 
+         
+        if(rs.next()) {
+            out.println("hello " + rs.getString(1));
+        } else {
+            out.println("login failed");
+        }
+        
+        out.flush();
     } catch (Exception e) {
         out.println("Exception details: " + e);
     }

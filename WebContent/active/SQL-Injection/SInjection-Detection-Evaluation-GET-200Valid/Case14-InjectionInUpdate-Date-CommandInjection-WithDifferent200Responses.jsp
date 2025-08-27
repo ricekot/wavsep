@@ -13,11 +13,11 @@
 <%
 if (request.getParameter("transactionDate") == null) {
 %>
-	Update The Description of Transactions in the Following Date:<br><br>
-	<form name="frmInput" id="frmInput" action="Case14-InjectionInUpdate-Date-CommandInjection-WithDifferent200Responses.jsp" method="POST">
-		<input type="text" name="transactionDate" id="transactionDate" value="2010-02-02"><br>
-		<input type=submit value="submit">
-	</form>
+    Update The Description of Transactions in the Following Date:<br><br>
+    <form name="frmInput" id="frmInput" action="Case14-InjectionInUpdate-Date-CommandInjection-WithDifferent200Responses.jsp" method="POST">
+        <input type="text" name="transactionDate" id="transactionDate" value="2010-02-02"><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
@@ -26,16 +26,16 @@ else {
 
         System.out.print("Connection Opened Successfully\n");
 
- 	    String SqlString = 
+        String SqlString = 
             "UPDATE transactions " +
- 	        "SET description='Hello World' " +
- 	        "WHERE transactionDate='" + transactionDate + "'";
- 		Statement stmt = conn.createStatement();
- 		int result = stmt.executeUpdate(SqlString);
- 		 
- 		out.println("Query executed");
-	  	out.flush();
-	  	
+            "SET description='Hello World' " +
+            "WHERE transactionDate='" + transactionDate + "'";
+        Statement stmt = conn.createStatement();
+        int result = stmt.executeUpdate(SqlString);
+         
+        out.println("Query executed");
+        out.flush();
+        
 
     } catch (Exception e) {
         out.println("Information is unavailable");

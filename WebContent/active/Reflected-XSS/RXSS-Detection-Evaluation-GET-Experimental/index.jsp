@@ -9,12 +9,12 @@
 <body>
 
 <%
-	String anticsrf = (String)request.getSession().getAttribute("anticsrf");
-	if(anticsrf == null) {
-		//Generate and store a new token
-		anticsrf = "" + Math.random();
-		request.getSession().setAttribute("anticsrf", anticsrf);
-	}
+    String anticsrf = (String)request.getSession().getAttribute("anticsrf");
+    if(anticsrf == null) {
+        //Generate and store a new token
+        anticsrf = "" + Math.random();
+        request.getSession().setAttribute("anticsrf", anticsrf);
+    }
 %>
 
 <font size="5">Test Cases:</font><br><br>

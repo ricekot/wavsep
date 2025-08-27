@@ -14,14 +14,14 @@
 <%
 if (request.getParameter("transactionId") == null) {
 %>
-	Select a Transaction to View:<br><br>
-	<form name="frmInput" id="frmInput" action="Case16-InjectionInView-NumericWithoutQuotes-PermissionBypass-With200Errors.jsp" method="POST">
-		<SELECT name="transactionId" id="transactionId">
-			<option value="1" selected="selected">1</option>
-		</SELECT>
-		<br>
-		<input type=submit value="submit">
-	</form>
+    Select a Transaction to View:<br><br>
+    <form name="frmInput" id="frmInput" action="Case16-InjectionInView-NumericWithoutQuotes-PermissionBypass-With200Errors.jsp" method="POST">
+        <SELECT name="transactionId" id="transactionId">
+            <option value="1" selected="selected">1</option>
+        </SELECT>
+        <br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
@@ -36,68 +36,68 @@ else {
   	  	  	    System.out.print("Connection Opened Successfully\n");
 
             //restrict the output presented to the first user output
-     	    String SqlString = 
-     	    	"SELECT transactionId, sum, description, transactionDate " +
-     	        "FROM transactions " +
-     	        "WHERE transactionId=" + transactionId +
-     	        " AND userId=" + currentUserId;
- 		    Statement stmt = conn.createStatement();
- 	 		ResultSet rs = stmt.executeQuery(SqlString);
- 	 		
- 	 		out.println("The list of transactions:");
- 	 		out.println("<TABLE>"); 		
- 	 		out.println("<TR>");
- 			out.println("<TD>");
- 			out.println("<B>");
- 			out.println("transactionId");
- 			out.println("</B>");
- 			out.println("</TD>");
- 			out.println("<TD>");
- 			out.println("<B>");
- 			out.println("sum");
- 			out.println("</B>");
- 			out.println("</TD>");
- 			out.println("<TD>");
- 			out.println("<B>");
- 			out.println("description");
- 			out.println("</B>");
- 			out.println("</TD>");
- 			out.println("<TD>");
- 			out.println("<B>");
- 			out.println("transactionDate");
- 			out.println("</B>");
- 			out.println("</TD>");
- 			out.println("</TR>");
- 			
- 	 		while(rs.next()) {
- 	 			
- 	 		    out.println("<TR>");
- 	 		    out.println("<TD>");
- 	 			out.println(rs.getLong(1));
- 	 			out.println("</TD>");
- 	 		    out.println("<TD>");
- 	 			out.println(rs.getLong(2));
- 	 			out.println("</TD>");
- 	 		    out.println("<TD>");
- 	 			out.println(rs.getString(3));
- 	 			out.println("</TD>");
- 	 		    out.println("<TD>");
- 	 			out.println(rs.getDate(4));
- 	 			out.println("</TD>");
- 	 			out.println("</TR>");
- 	 	    } 
- 	 		out.println("</TABLE>");
- 	 	 	
+            String SqlString = 
+                "SELECT transactionId, sum, description, transactionDate " +
+                "FROM transactions " +
+                "WHERE transactionId=" + transactionId +
+                " AND userId=" + currentUserId;
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(SqlString);
+            
+            out.println("The list of transactions:");
+            out.println("<TABLE>"); 		
+            out.println("<TR>");
+            out.println("<TD>");
+            out.println("<B>");
+            out.println("transactionId");
+            out.println("</B>");
+            out.println("</TD>");
+            out.println("<TD>");
+            out.println("<B>");
+            out.println("sum");
+            out.println("</B>");
+            out.println("</TD>");
+            out.println("<TD>");
+            out.println("<B>");
+            out.println("description");
+            out.println("</B>");
+            out.println("</TD>");
+            out.println("<TD>");
+            out.println("<B>");
+            out.println("transactionDate");
+            out.println("</B>");
+            out.println("</TD>");
+            out.println("</TR>");
+            
+            while(rs.next()) {
+                
+                out.println("<TR>");
+                out.println("<TD>");
+                out.println(rs.getLong(1));
+                out.println("</TD>");
+                out.println("<TD>");
+                out.println(rs.getLong(2));
+                out.println("</TD>");
+                out.println("<TD>");
+                out.println(rs.getString(3));
+                out.println("</TD>");
+                out.println("<TD>");
+                out.println(rs.getDate(4));
+                out.println("</TD>");
+                out.println("</TR>");
+            } 
+            out.println("</TABLE>");
+            
   	    } //end of if-else block
 
-		out.flush();  	    
+        out.flush();  	    
     } catch (Exception e) {
         out.println("Exception details: " + e);
         if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
   	        System.out.println("Exception details: " + e);
         } 
     }
- 	 	
+        
 } //end of if/else block
 %>
 

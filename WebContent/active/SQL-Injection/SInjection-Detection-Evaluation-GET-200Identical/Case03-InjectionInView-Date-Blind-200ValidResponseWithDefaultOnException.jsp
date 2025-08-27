@@ -10,22 +10,21 @@
 </head>
 <body>
 
-
 <%
 if (request.getParameter("transactionDate") == null) {
 %>
-	Search Transaction by Date (YYYY-MM-YY):<br><br>
-	<form name="frmInput" id="frmInput" action="Case03-InjectionInView-Date-Blind-200ValidResponseWithDefaultOnException.jsp" method="POST">
-		<input type="text" name="transactionDate" id="transactionDate" value=2010-01-01><br>
-		<input type=submit value="submit">
-	</form><br>
-	
-	Search Transaction by Date (YYYY-MM-YY):<br><br>
-	<form name="frmInput2" id="frmInput2" action="Case03-InjectionInView-Date-Blind-200ValidResponseWithDefaultOnException.jsp" method="POST">
-		<input type="text" name="transactionDate" id="transactionDate" value=2010-02-02><br>
-		<input type=submit value="submit">
-	</form><br>
-	
+    Search Transaction by Date (YYYY-MM-YY):<br><br>
+    <form name="frmInput" id="frmInput" action="Case03-InjectionInView-Date-Blind-200ValidResponseWithDefaultOnException.jsp" method="POST">
+        <input type="text" name="transactionDate" id="transactionDate" value=2010-01-01><br>
+        <input type=submit value="submit">
+    </form><br>
+    
+    Search Transaction by Date (YYYY-MM-YY):<br><br>
+    <form name="frmInput2" id="frmInput2" action="Case03-InjectionInView-Date-Blind-200ValidResponseWithDefaultOnException.jsp" method="POST">
+        <input type="text" name="transactionDate" id="transactionDate" value=2010-02-02><br>
+        <input type=submit value="submit">
+    </form><br>
+    
 <%
 } 
 else {  	   
@@ -33,83 +32,83 @@ else {
     long defaultTransSum = 0;
     
     try (Connection conn = ConnectionPoolManager.getConnection()) {
-    	String transactionDate = request.getParameter("transactionDate");
+        String transactionDate = request.getParameter("transactionDate");
 
         System.out.print("Connection Opened Successfully\n");
         
       //restrict the output presented to the first user output
- 	    String SqlString = 
- 	    	"SELECT transactionId, sum " +
- 	        "FROM transactions " +
- 	        "WHERE transactionDate='2010-01-01' " +
- 	        "LIMIT 1";
- 		Statement stmt = conn.createStatement();
+        String SqlString = 
+            "SELECT transactionId, sum " +
+            "FROM transactions " +
+            "WHERE transactionDate='2010-01-01' " +
+            "LIMIT 1";
+        Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(SqlString);
         
-		while(rs.next()) {
-			defaultTransId = rs.getLong(1);
-			defaultTransSum = rs.getLong(2);
- 	    } 
-		
- 		out.println("The list of transactions:");
- 		out.println("<TABLE>"); 		
- 		out.println("<TR>");
-		out.println("<TD>");
-		out.println("<B>");
-		out.println("transactionId");
-		out.println("</B>");
-		out.println("</TD>");
-		out.println("<TD>");
-		out.println("<B>");
-		out.println("Sum");
-		out.println("</B>");
-		out.println("</TD>");
-		out.println("</TR>");
-		
-		//restrict the output presented to the first user output
-		SqlString = 
- 	    	"SELECT transactionId, sum " +
- 	        "FROM transactions " +
- 	        "WHERE transactionDate='" + transactionDate + "' " +
- 	        "LIMIT 1";
+        while(rs.next()) {
+            defaultTransId = rs.getLong(1);
+            defaultTransSum = rs.getLong(2);
+        } 
+        
+        out.println("The list of transactions:");
+        out.println("<TABLE>"); 		
+        out.println("<TR>");
+        out.println("<TD>");
+        out.println("<B>");
+        out.println("transactionId");
+        out.println("</B>");
+        out.println("</TD>");
+        out.println("<TD>");
+        out.println("<B>");
+        out.println("Sum");
+        out.println("</B>");
+        out.println("</TD>");
+        out.println("</TR>");
+        
+        //restrict the output presented to the first user output
+        SqlString = 
+            "SELECT transactionId, sum " +
+            "FROM transactions " +
+            "WHERE transactionDate='" + transactionDate + "' " +
+            "LIMIT 1";
 
- 		stmt = conn.createStatement();
+        stmt = conn.createStatement();
         rs = stmt.executeQuery(SqlString);
         
- 		while(rs.next()) {
- 			
- 		    out.println("<TR>");
- 		    out.println("<TD>");
- 			out.println(rs.getLong(1));
- 			out.println("</TD>");
- 		    out.println("<TD>");
- 			out.println(rs.getLong(2));
- 			out.println("</TD>");
- 			out.println("</TR>");
- 	    } 
- 		out.println("</TABLE>");
- 	 	
-	  	out.flush();
-	  	
-	  	
+        while(rs.next()) {
+            
+            out.println("<TR>");
+            out.println("<TD>");
+            out.println(rs.getLong(1));
+            out.println("</TD>");
+            out.println("<TD>");
+            out.println(rs.getLong(2));
+            out.println("</TD>");
+            out.println("</TR>");
+        } 
+        out.println("</TABLE>");
+        
+        out.flush();
+        
+        
     } catch (Exception e) {
-		out.println("<TR>");
- 		out.println("<TD>");
- 		out.println(defaultTransId);
- 		out.println("</TD>");
- 		out.println("<TD>");
- 		out.println(defaultTransSum);
- 		out.println("</TD>");
- 		out.println("</TR>");
-    	out.println("</TABLE>");
-    	
-    	if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
+        out.println("<TR>");
+        out.println("<TD>");
+        out.println(defaultTransId);
+        out.println("</TD>");
+        out.println("<TD>");
+        out.println(defaultTransSum);
+        out.println("</TD>");
+        out.println("</TR>");
+        out.println("</TABLE>");
+        
+        if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
   	        System.out.println("Exception details: " + e);
         } 
 
-    	
+        
     }
- 	 	
+        
 } //end of if/else block
 %>
 

@@ -12,19 +12,19 @@
 <%
 if (request.getParameter("userinput") == null) {
 %>
-	Enter your input:<br><br>
-	<form name="frmInput" id="frmInput" action="Case38-InjectionInToVariableBeingAssignedToDomXssSinkEval.jsp" method="GET">
-		<input type="text" name="userinput" id="userinput"><br>
-		<input type=submit value="submit">
-	</form>
+    Enter your input:<br><br>
+    <form name="frmInput" id="frmInput" action="Case38-InjectionInToVariableBeingAssignedToDomXssSinkEval.jsp" method="GET">
+        <input type="text" name="userinput" id="userinput"><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
     try {
-	  	    String userinput = request.getParameter("userinput");
-			userinput = HtmlEncoder.htmlEncodeAngleBracketsAndQuotes(userinput);
-	  	    out.println("<script>\nvar input=\"" + userinput + "\";eval(input);</script>");
-	  	    out.flush();
+            String userinput = request.getParameter("userinput");
+            userinput = HtmlEncoder.htmlEncodeAngleBracketsAndQuotes(userinput);
+            out.println("<script>\nvar input=\"" + userinput + "\";eval(input);</script>");
+            out.flush();
     } catch (Exception e) {
         out.println("Exception details: " + e);
     }

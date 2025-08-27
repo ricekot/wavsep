@@ -9,12 +9,12 @@
 <body>
 
 <%
-	String anticsrf = (String)request.getSession().getAttribute("anticsrf");
-	if(anticsrf == null) {
-		//Generate and store a new token
-		anticsrf = "" + Math.random();
-		request.getSession().setAttribute("anticsrf", anticsrf);
-	}
+    String anticsrf = (String)request.getSession().getAttribute("anticsrf");
+    if(anticsrf == null) {
+        //Generate and store a new token
+        anticsrf = "" + Math.random();
+        request.getSession().setAttribute("anticsrf", anticsrf);
+    }
 
 String cookieName = "userinput";
 boolean foundFlag = false;
@@ -22,16 +22,16 @@ boolean foundFlag = false;
 Cookie cookies [] = request.getCookies ();
 Cookie myCookie = null;
 if (cookies != null) {
-	for (int i = 0; i < cookies.length; i++) {
-		if (cookies [i].getName().equals (cookieName)) {		
-			foundFlag = true;
-			break;
-		}
-	}
-	if(foundFlag == false) {
-		//Create a cookie, if not supplied
-		response.addHeader("Set-Cookie", cookieName + "=EmptyValue; HTTPOnly");
-	}
+    for (int i = 0; i < cookies.length; i++) {
+        if (cookies [i].getName().equals (cookieName)) {		
+            foundFlag = true;
+            break;
+        }
+    }
+    if(foundFlag == false) {
+        //Create a cookie, if not supplied
+        response.addHeader("Set-Cookie", cookieName + "=EmptyValue; HTTPOnly");
+    }
 }
 
 %>

@@ -12,22 +12,22 @@
 <%
 if (request.getParameter("userinput") == null) {
 %>
-	Enter your input:<br><br>
-	<form name="frmInput" id="frmInput" action="Case15-Vbs2VbsEventScope.jsp" method="POST">
-		<input type="text" name="userinput" id="userinput"><br>
-		<input type=submit value="submit">
-	</form>
+    Enter your input:<br><br>
+    <form name="frmInput" id="frmInput" action="Case15-Vbs2VbsEventScope.jsp" method="POST">
+        <input type="text" name="userinput" id="userinput"><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
     try {
-	  	    String userinput = request.getParameter("userinput");
-	  	    //only encode Angle brackets and double quotes
-	  	    userinput = HtmlEncoder.htmlEncodeAngleBracketsAndDoubleQuotes(userinput);
-     		out.println("Hello Button: <input type=\"button\" value=\"ClickMe\" onClick=\"VBScript: Dim OrderID\n"
-     				  + "OrderID = " + userinput + "\n Document.Write 'Order Number' & OrderID & ' Was Approved'\n\">");
-     		
-	  	    out.flush();
+            String userinput = request.getParameter("userinput");
+            //only encode Angle brackets and double quotes
+            userinput = HtmlEncoder.htmlEncodeAngleBracketsAndDoubleQuotes(userinput);
+            out.println("Hello Button: <input type=\"button\" value=\"ClickMe\" onClick=\"VBScript: Dim OrderID\n"
+                      + "OrderID = " + userinput + "\n Document.Write 'Order Number' & OrderID & ' Was Approved'\n\">");
+            
+            out.flush();
     } catch (Exception e) {
         out.println("Exception details: " + e);
     }

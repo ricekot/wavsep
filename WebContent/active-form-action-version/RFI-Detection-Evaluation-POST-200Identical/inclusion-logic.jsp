@@ -270,7 +270,7 @@
 		String targetPageName = this.getServletContext().getContextPath();
 		targetPageName = "Case" + (request.getServletPath()).split("/Case")[1];
 	%>
-	
+
 	<%
 		if (request.getParameter("target") == null) {
 	%>

@@ -12,20 +12,20 @@
 <%
 if (request.getParameter("userinput") == null) {
 %>
-	Enter your input:<br><br>
-	<form name="frmInput" id="frmInput" action="Case06-QuotesBracketsAndCrLfEncodingInTextProperty.jsp" method="POST">
-		<input type="text" name="userinput" id="userinput"><br>
-		<input type=submit value="submit">
-	</form>
+    Enter your input:<br><br>
+    <form name="frmInput" id="frmInput" action="Case06-QuotesBracketsAndCrLfEncodingInTextProperty.jsp" method="POST">
+        <input type="text" name="userinput" id="userinput"><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
     try {
-	  	    String userinput = request.getParameter("userinput");
-	  	    userinput = HtmlEncoder.htmlEncodeDoubleQuotes(userinput);
-	  	    userinput = HtmlEncoder.htmlEncodeCrLf(userinput);
-     		out.println("<input type=\"text\" value=\"The reflected value: " + userinput +"\">");
-	  	    out.flush();
+            String userinput = request.getParameter("userinput");
+            userinput = HtmlEncoder.htmlEncodeDoubleQuotes(userinput);
+            userinput = HtmlEncoder.htmlEncodeCrLf(userinput);
+            out.println("<input type=\"text\" value=\"The reflected value: " + userinput +"\">");
+            out.flush();
     } catch (Exception e) {
         out.println("Exception details: " + e);
     }

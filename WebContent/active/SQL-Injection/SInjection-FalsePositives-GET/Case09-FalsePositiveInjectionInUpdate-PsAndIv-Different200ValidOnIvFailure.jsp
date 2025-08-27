@@ -15,11 +15,11 @@
 <%
 if (request.getParameter("transactionDate") == null) {
 %>
-	Update The Description of Transactions in the Following Date:<br><br>
-	<form name="frmInput" id="frmInput" action="Case09-FalsePositiveInjectionInUpdate-PsAndIv-Different200ValidOnIvFailure.jsp" method="POST">
-		<input type="text" name="transactionDate" id="transactionDate" value="2010-02-02"><br>
-		<input type=submit value="submit">
-	</form>
+    Update The Description of Transactions in the Following Date:<br><br>
+    <form name="frmInput" id="frmInput" action="Case09-FalsePositiveInjectionInUpdate-PsAndIv-Different200ValidOnIvFailure.jsp" method="POST">
+        <input type="text" name="transactionDate" id="transactionDate" value="2010-02-02"><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
@@ -30,27 +30,27 @@ else {
   	    	throw new Exception("Invalid Input");
   	    }
   	    if (InputValidator.validateSemicolon(transactionDate)) {
-	    	throw new Exception("Invalid Input");
-	    }
+            throw new Exception("Invalid Input");
+        }
   	    
         System.out.print("Connection Opened Successfully\n");
 
- 	    String SqlString = 
+        String SqlString = 
             "UPDATE transactions " +
- 	        "SET description='Hello World' " +
- 	        "WHERE transactionDate=?";
- 		PreparedStatement pstmt = conn.prepareStatement(SqlString);
- 		pstmt.setDate(1,java.sql.Date.valueOf(transactionDate));
- 		int result = pstmt.executeUpdate();
- 		 
- 		out.println("Query executed");
- 		
- 	  	out.flush();
+            "SET description='Hello World' " +
+            "WHERE transactionDate=?";
+        PreparedStatement pstmt = conn.prepareStatement(SqlString);
+        pstmt.setDate(1,java.sql.Date.valueOf(transactionDate));
+        int result = pstmt.executeUpdate();
+         
+        out.println("Query executed");
+        
+        out.flush();
     } catch (Exception e) {
 
-    	if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
+        if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
   	        System.out.println("Exception details: " + e);
-    	} 
+        } 
         out.println("Update failed");
     }
 } //end of if/else block

@@ -8,17 +8,16 @@
 <title>Case 19 - RXSS via Javascript injection into the scope of javascript code within a property (No String Delimiter)</title>
 </head>
 
-
 <%
 if (request.getParameter("userinput") == null) {
 %>
     <body>
-	Enter your input:<br><br>
-	<form name="frmInput" id="frmInput" action="Case19-Js2PropertyJsScope.jsp" method="POST">
-		<input type="text" name="userinput" id="userinput"><br>
-		<input type=submit value="submit">
-	</form>
-	</body>
+    Enter your input:<br><br>
+    <form name="frmInput" id="frmInput" action="Case19-Js2PropertyJsScope.jsp" method="POST">
+        <input type="text" name="userinput" id="userinput"><br>
+        <input type=submit value="submit">
+    </form>
+    </body>
 <%
 } 
 else {
@@ -27,13 +26,13 @@ else {
 <frame name="frame1" id="frame1" src="dummy.html">
 <%	
     try {
-	  	    String userinput = request.getParameter("userinput"); 
-	  	    //only encode Angle brackets, single quotes and double quotes
-	  	    userinput = HtmlEncoder.htmlEncodeAngleBracketsAndQuotes(userinput);
-     		out.println("<frame name=\"frame2\" id=\"frame2\" src=\"javascript:"
-     			+ "var orderId=" + userinput 
-     			+ "; alert('Order Number ' + orderId +' Was Approved');\"> ");
-	  	    out.flush();
+            String userinput = request.getParameter("userinput"); 
+            //only encode Angle brackets, single quotes and double quotes
+            userinput = HtmlEncoder.htmlEncodeAngleBracketsAndQuotes(userinput);
+            out.println("<frame name=\"frame2\" id=\"frame2\" src=\"javascript:"
+                + "var orderId=" + userinput 
+                + "; alert('Order Number ' + orderId +' Was Approved');\"> ");
+            out.flush();
     } catch (Exception e) {
         out.println("Exception details: " + e);
     }

@@ -12,22 +12,22 @@
 <%
 if (request.getParameter("userinput") == null) {
 %>
-	Enter your input:<br><br>
-	<form name="frmInput" id="frmInput" action="Case09-SrcProperty2TagStructure.jsp" method="POST">
-		<input type="text" name="userinput" id="userinput"><br>
-		<input type=submit value="submit">
-	</form>
+    Enter your input:<br><br>
+    <form name="frmInput" id="frmInput" action="Case09-SrcProperty2TagStructure.jsp" method="POST">
+        <input type="text" name="userinput" id="userinput"><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
     try {
-	  	    String userinput = request.getParameter("userinput");
-	  	    //only encode Angle brackets, single quotes and double quotes 
-	  	    userinput = HtmlEncoder.htmlEncodeAngleBracketsAndQuotes(userinput);
-     		out.println("Script Tag: <script id=" + userinput + ">");
-     		out.println("document.write('hello');");
-     		out.println("</script>");
-	  	    out.flush();
+            String userinput = request.getParameter("userinput");
+            //only encode Angle brackets, single quotes and double quotes 
+            userinput = HtmlEncoder.htmlEncodeAngleBracketsAndQuotes(userinput);
+            out.println("Script Tag: <script id=" + userinput + ">");
+            out.println("document.write('hello');");
+            out.println("</script>");
+            out.flush();
     } catch (Exception e) {
         out.println("Exception details: " + e);
     }

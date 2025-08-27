@@ -11,25 +11,25 @@
 <%
 if (request.getParameter("userinput") == null) {
 %>
-	Enter your input:<br><br>
-	<form name="frmInput" id="frmInput" action="Case32-Tag2HtmlPageScopeValidViewstateRequired.jsp" method="POST">
-		<input type="text" name="userinput" id="userinput"><br>
-		<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUENTM4MWRkhsjF+62gWnhYUcEyuRwTHxGDVzA=" /> 
-		<input type=submit value="submit">
-	</form>
+    Enter your input:<br><br>
+    <form name="frmInput" id="frmInput" action="Case32-Tag2HtmlPageScopeValidViewstateRequired.jsp" method="POST">
+        <input type="text" name="userinput" id="userinput"><br>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUENTM4MWRkhsjF+62gWnhYUcEyuRwTHxGDVzA=" /> 
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
     try {
-	  	    String userinput = request.getParameter("userinput");
-	  	    String viewstate = request.getParameter("__VIEWSTATE");
-	  	    viewstate = viewstate.replace("+"," ");
-	  	    if (viewstate.equals("/wEPDwUENTM4MWRkhsjF 62gWnhYUcEyuRwTHxGDVzA=")) {
-	  	    	out.println("The reflected value: " + userinput);
-		  	    out.flush();
-	  	    } else {
-	  	        response.sendError(500,"Invalid Viewstate");
-	  	    }
+            String userinput = request.getParameter("userinput");
+            String viewstate = request.getParameter("__VIEWSTATE");
+            viewstate = viewstate.replace("+"," ");
+            if (viewstate.equals("/wEPDwUENTM4MWRkhsjF 62gWnhYUcEyuRwTHxGDVzA=")) {
+                out.println("The reflected value: " + userinput);
+                out.flush();
+            } else {
+                response.sendError(500,"Invalid Viewstate");
+            }
     } catch (Exception e) {
         out.println("Exception details: " + e);
     }

@@ -10,9 +10,9 @@
 <body>
 
 <!--
-	Inspired by a vulnerable test case originally written for the OWASP Zed Attack Proxy (ZAP) project
-	(http://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) 
-	Original Author: psiinon (psiinon@gmail.com).
+    Inspired by a vulnerable test case originally written for the OWASP Zed Attack Proxy (ZAP) project
+    (http://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) 
+    Original Author: psiinon (psiinon@gmail.com).
 -->
 
 <%
@@ -25,22 +25,22 @@ boolean foundFlag = false;
 Cookie cookies [] = request.getCookies ();
 Cookie myCookie = null;
 if (cookies != null) {
-	for (int i = 0; i < cookies.length; i++) {
-		if (cookies [i].getName().equals (cookieName)) {
-			myCookie = cookies[i];
-			foundFlag = true;
-			userinput = myCookie.getValue();
-			myCookie.getName();
-			
-			break;
-		}
-	}
-	
-	if(foundFlag == false) {
-		//Create a cookie, if not supplied
-		response.addHeader("Set-Cookie", cookieName + "=EmptyValue; HTTPOnly");
-		userinput = "EmptyValue";
-	}
+    for (int i = 0; i < cookies.length; i++) {
+        if (cookies [i].getName().equals (cookieName)) {
+            myCookie = cookies[i];
+            foundFlag = true;
+            userinput = myCookie.getValue();
+            myCookie.getName();
+            
+            break;
+        }
+    }
+    
+    if(foundFlag == false) {
+        //Create a cookie, if not supplied
+        response.addHeader("Set-Cookie", cookieName + "=EmptyValue; HTTPOnly");
+        userinput = "EmptyValue";
+    }
 }
 
 %>
@@ -48,18 +48,18 @@ if (cookies != null) {
 <%
 if (request.getParameter("userinput") == null) {
 %>
-	Enter your input:<br><br>
-	<form name="frmInput" id="frmInput" method="POST">
-		<input type="text" name="userinput" id="userinput"><br>
-		<input type=submit value="submit">
-	</form>
+    Enter your input:<br><br>
+    <form name="frmInput" id="frmInput" method="POST">
+        <input type="text" name="userinput" id="userinput"><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
     try {
-	  	    //userinput is populated from cookie 
-     		out.println("The reflected value: " + userinput);
-	  	    out.flush();
+            //userinput is populated from cookie 
+            out.println("The reflected value: " + userinput);
+            out.flush();
     } catch (Exception e) {
         out.println("Exception details: " + e);
     }

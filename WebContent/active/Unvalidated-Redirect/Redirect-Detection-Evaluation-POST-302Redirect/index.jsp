@@ -12,7 +12,7 @@
 
 <%
  String baseURL = FileConstants.HTTP_PREFIX + request.getServerName() + ":" + request.getServerPort() 
- 				  + request.getContextPath() + (contextRelativeDirPath.replace("index.jsp",""));
+                  + request.getContextPath() + (contextRelativeDirPath.replace("index.jsp",""));
  String baseUrlWithoutProtocol = request.getServerName() + ":" + request.getServerPort() 
   				  + request.getContextPath() + (contextRelativeDirPath.replace("index.jsp",""));
 %>

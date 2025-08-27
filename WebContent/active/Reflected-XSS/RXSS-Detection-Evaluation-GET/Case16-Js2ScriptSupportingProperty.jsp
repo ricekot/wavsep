@@ -8,17 +8,16 @@
 <title>Case 16 - RXSS via Javascript injection into the scope of a script supporting property</title>
 </head>
 
-
 <%
 if (request.getParameter("userinput") == null) {
 %>
     <body>
-	Enter your input:<br><br>
-	<form name="frmInput" id="frmInput" action="Case16-Js2ScriptSupportingProperty.jsp" method="POST">
-		<input type="text" name="userinput" id="userinput"><br>
-		<input type=submit value="submit">
-	</form>
-	</body>
+    Enter your input:<br><br>
+    <form name="frmInput" id="frmInput" action="Case16-Js2ScriptSupportingProperty.jsp" method="POST">
+        <input type="text" name="userinput" id="userinput"><br>
+        <input type=submit value="submit">
+    </form>
+    </body>
 <%
 } 
 else {
@@ -27,14 +26,14 @@ else {
 <frame name="frame1" id="frame1" src="dummy.html">
 <%	
     try {
-	  	    String userinput = request.getParameter("userinput"); 
-	  	    //only encode Angle brackets, single quotes and double quotes
-	  	    userinput = HtmlEncoder.htmlEncodeAngleBracketsAndQuotes(userinput);
-	  	    userinput = userinput.toLowerCase();
-	  	    userinput = userinput.replaceAll("http","");
-     		out.println("<frame name=\"frame2\" id=\"frame2\" src=\""
-     			+ userinput +"\"> ");
-	  	    out.flush();
+            String userinput = request.getParameter("userinput"); 
+            //only encode Angle brackets, single quotes and double quotes
+            userinput = HtmlEncoder.htmlEncodeAngleBracketsAndQuotes(userinput);
+            userinput = userinput.toLowerCase();
+            userinput = userinput.replaceAll("http","");
+            out.println("<frame name=\"frame2\" id=\"frame2\" src=\""
+                + userinput +"\"> ");
+            out.flush();
     } catch (Exception e) {
         out.println("Exception details: " + e);
     }

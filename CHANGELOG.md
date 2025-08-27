@@ -3,6 +3,10 @@ All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## 2025-08-28
+
+### Changed
+- Main JSP to use leading spaces instead of a mix of spaces and tabs - to make refactoring easier. 
 
 ## 2025-08-27
 

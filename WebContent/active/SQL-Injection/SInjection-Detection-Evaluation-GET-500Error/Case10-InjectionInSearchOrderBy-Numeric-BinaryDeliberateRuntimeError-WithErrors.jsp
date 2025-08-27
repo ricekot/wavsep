@@ -14,11 +14,11 @@
 <%
 if (request.getParameter("orderby") == null) {
 %>
-	View Messages and Organize Results According to Field Index:<br><br>
-	<form name="frmInput" id="frmInput" action="Case10-InjectionInSearchOrderBy-Numeric-BinaryDeliberateRuntimeError-WithErrors.jsp" method="POST">
-		<input type="text" name="orderby" id="orderby" value="1" ><br>
-		<input type=submit value="submit">
-	</form>
+    View Messages and Organize Results According to Field Index:<br><br>
+    <form name="frmInput" id="frmInput" action="Case10-InjectionInSearchOrderBy-Numeric-BinaryDeliberateRuntimeError-WithErrors.jsp" method="POST">
+        <input type="text" name="orderby" id="orderby" value="1" ><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
@@ -31,52 +31,52 @@ else {
   	    
         System.out.print("Connection Opened Successfully\n");
 
- 	    String SqlString = 
+        String SqlString = 
             "SELECT msgid, title, message " +
- 	        "FROM messages " +
- 	        "ORDER BY " + order;
- 		Statement stmt = conn.createStatement();
- 		ResultSet rs = stmt.executeQuery(SqlString);
- 		
- 		out.println("The list of messages:");
- 		out.println("<TABLE>"); 		
- 		out.println("<TR>");
-		out.println("<TD>");
-		out.println("<B>");
-		out.println("MsgId");
-		out.println("</B>");
-		out.println("</TD>");
-		out.println("<TD>");
-		out.println("<B>");
-		out.println("Title");
-		out.println("</B>");
-		out.println("</TD>");
-		out.println("<TD>");
-		out.println("<B>");
-		out.println("Message");
-		out.println("</B>");
-		out.println("</TD>");
-		out.println("</TR>");
-		
- 		while(rs.next()) {
- 			
- 		    out.println("<TR>");
- 		    out.println("<TD>");
- 			out.println(rs.getString(1));
- 			out.println("</TD>");
- 		    out.println("<TD>");
- 			out.println(rs.getString(2));
- 			out.println("</TD>");
- 		    out.println("<TD>");
- 			out.println(rs.getString(3));
- 			out.println("</TD>");
- 			out.println("</TR>");
- 	    } 
- 		out.println("</TABLE>");
- 	 	
-	  	out.flush();
-	  	
-	  	
+            "FROM messages " +
+            "ORDER BY " + order;
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(SqlString);
+        
+        out.println("The list of messages:");
+        out.println("<TABLE>"); 		
+        out.println("<TR>");
+        out.println("<TD>");
+        out.println("<B>");
+        out.println("MsgId");
+        out.println("</B>");
+        out.println("</TD>");
+        out.println("<TD>");
+        out.println("<B>");
+        out.println("Title");
+        out.println("</B>");
+        out.println("</TD>");
+        out.println("<TD>");
+        out.println("<B>");
+        out.println("Message");
+        out.println("</B>");
+        out.println("</TD>");
+        out.println("</TR>");
+        
+        while(rs.next()) {
+            
+            out.println("<TR>");
+            out.println("<TD>");
+            out.println(rs.getString(1));
+            out.println("</TD>");
+            out.println("<TD>");
+            out.println(rs.getString(2));
+            out.println("</TD>");
+            out.println("<TD>");
+            out.println(rs.getString(3));
+            out.println("</TD>");
+            out.println("</TR>");
+        } 
+        out.println("</TABLE>");
+        
+        out.flush();
+        
+        
     } catch (Exception e) {
         response.sendError(500,"Exception details: " + e);
         

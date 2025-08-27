@@ -142,7 +142,7 @@
   Single Quote Example: ' <br>
   SQL Comment Example:  -- <br>
   <br>
- 
+
   <B><a href="Case10-FalsePositiveInjectionInUpdate-PsAndIv-Identical200Response.jsp?transactionDate=2010-02-02">Case10-FalsePositiveInjectionInUpdate-PsAndIv-Identical200Response.jsp</a></B><br>
   False Positive Injection in an update page that always responds with an identical 200 response.<br>
   <U>Barriers:</U><br>

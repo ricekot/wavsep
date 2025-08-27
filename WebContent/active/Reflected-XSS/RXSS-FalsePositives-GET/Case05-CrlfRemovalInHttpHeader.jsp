@@ -4,8 +4,8 @@
 <%
 if (request.getParameter("userinput") != null) {
     try {
-    	//the servlet/JSP implementation of tomcat (version 6.0.x+)
-    	//should not be vulnerable to CrLf injection
+        //the servlet/JSP implementation of tomcat (version 6.0.x+)
+        //should not be vulnerable to CrLf injection
   	    String userinput = request.getParameter("userinput");
   	    userinput = HtmlEncoder.htmlEncodeCrLf(userinput);
   	    response.addHeader("Server-Info", userinput);
@@ -13,7 +13,7 @@ if (request.getParameter("userinput") != null) {
   	    cookie.setMaxAge(0);
   	    response.addCookie(cookie);
   	  	
- 		out.println("Empty Page");
+        out.println("Empty Page");
   	    out.flush();
     } catch (Exception e) {
         out.println("Exception details: " + e);
@@ -29,11 +29,11 @@ else {
 </head>
 <body>
 
-	Enter your input:<br><br>
-	<form name="frmInput" id="frmInput" action="Case05-CrlfRemovalInHttpHeader.jsp" method="POST">
-		<input type="text" name="userinput" id="userinput"><br>
-		<input type=submit value="submit">
-	</form>
+    Enter your input:<br><br>
+    <form name="frmInput" id="frmInput" action="Case05-CrlfRemovalInHttpHeader.jsp" method="POST">
+        <input type="text" name="userinput" id="userinput"><br>
+        <input type=submit value="submit">
+    </form>
 
 </body>
 </html>

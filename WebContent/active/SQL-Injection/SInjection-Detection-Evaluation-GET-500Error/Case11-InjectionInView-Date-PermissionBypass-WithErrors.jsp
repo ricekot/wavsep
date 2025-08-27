@@ -13,11 +13,11 @@
 <%
 if (request.getParameter("transactionDate") == null) {
 %>
-	View Transactions in the Follwing Date (YYYY-MM-DD):<br><br>
-	<form name="frmInput" id="frmInput" action="Case11-InjectionInView-Date-PermissionBypass-WithErrors.jsp" method="POST">
-		<input type="text" name="transactionDate" id="transactionDate" value="2010-01-01"><br>
-		<input type=submit value="submit">
-	</form>
+    View Transactions in the Follwing Date (YYYY-MM-DD):<br><br>
+    <form name="frmInput" id="frmInput" action="Case11-InjectionInView-Date-PermissionBypass-WithErrors.jsp" method="POST">
+        <input type="text" name="transactionDate" id="transactionDate" value="2010-01-01"><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
@@ -28,60 +28,60 @@ else {
         System.out.print("Connection Opened Successfully\n");
 
       //restrict the output presented to the first user output
- 	    String SqlString = 
- 	    	"SELECT transactionId, sum, description, transactionDate " +
- 	        "FROM transactions " +
- 	        "WHERE transactionDate='" + date + "'" +
- 	        " AND userId=" + currentUserId;
- 		Statement stmt = conn.createStatement();
+        String SqlString = 
+            "SELECT transactionId, sum, description, transactionDate " +
+            "FROM transactions " +
+            "WHERE transactionDate='" + date + "'" +
+            " AND userId=" + currentUserId;
+        Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(SqlString);
- 		
- 		out.println("The list of transactions:");
- 		out.println("<TABLE>"); 		
- 		out.println("<TR>");
-		out.println("<TD>");
-		out.println("<B>");
-		out.println("transactionId");
-		out.println("</B>");
-		out.println("</TD>");
-		out.println("<TD>");
-		out.println("<B>");
-		out.println("sum");
-		out.println("</B>");
-		out.println("</TD>");
-		out.println("<TD>");
-		out.println("<B>");
-		out.println("description");
-		out.println("</B>");
-		out.println("</TD>");
-		out.println("<TD>");
-		out.println("<B>");
-		out.println("transactionDate");
-		out.println("</B>");
-		out.println("</TD>");
-		out.println("</TR>");
-		
- 		while(rs.next()) {
- 			
- 		    out.println("<TR>");
- 		    out.println("<TD>");
- 			out.println(rs.getLong(1));
- 			out.println("</TD>");
- 		    out.println("<TD>");
- 			out.println(rs.getLong(2));
- 			out.println("</TD>");
- 		    out.println("<TD>");
- 			out.println(rs.getString(3));
- 			out.println("</TD>");
- 		    out.println("<TD>");
- 			out.println(rs.getDate(4));
- 			out.println("</TD>");
- 			out.println("</TR>");
- 	    } 
- 		out.println("</TABLE>");
- 	 	
-	  	out.flush();
-	  	
+        
+        out.println("The list of transactions:");
+        out.println("<TABLE>"); 		
+        out.println("<TR>");
+        out.println("<TD>");
+        out.println("<B>");
+        out.println("transactionId");
+        out.println("</B>");
+        out.println("</TD>");
+        out.println("<TD>");
+        out.println("<B>");
+        out.println("sum");
+        out.println("</B>");
+        out.println("</TD>");
+        out.println("<TD>");
+        out.println("<B>");
+        out.println("description");
+        out.println("</B>");
+        out.println("</TD>");
+        out.println("<TD>");
+        out.println("<B>");
+        out.println("transactionDate");
+        out.println("</B>");
+        out.println("</TD>");
+        out.println("</TR>");
+        
+        while(rs.next()) {
+            
+            out.println("<TR>");
+            out.println("<TD>");
+            out.println(rs.getLong(1));
+            out.println("</TD>");
+            out.println("<TD>");
+            out.println(rs.getLong(2));
+            out.println("</TD>");
+            out.println("<TD>");
+            out.println(rs.getString(3));
+            out.println("</TD>");
+            out.println("<TD>");
+            out.println(rs.getDate(4));
+            out.println("</TD>");
+            out.println("</TR>");
+        } 
+        out.println("</TABLE>");
+        
+        out.flush();
+        
     } catch (Exception e) {
         response.sendError(500,"Exception details: " + e);
         
@@ -89,9 +89,8 @@ else {
   	        System.out.println("Exception details: " + e);
         } 
 
-
     }
- 	 	
+        
 } //end of if/else block
 %>
 

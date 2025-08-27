@@ -12,24 +12,24 @@
 <%
 if (request.getParameter("userinput") == null) {
 %>
-	Enter your input:<br><br>
-	<form name="frmInput" id="frmInput" action="Case25-Vbs2ScriptTagDoubleQuoteDelimiter.jsp" method="POST">
-		<input type="text" name="userinput" id="userinput"><br>
-		<input type=submit value="submit">
-	</form>
+    Enter your input:<br><br>
+    <form name="frmInput" id="frmInput" action="Case25-Vbs2ScriptTagDoubleQuoteDelimiter.jsp" method="POST">
+        <input type="text" name="userinput" id="userinput"><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {	
     try {
-	  	    String userinput = request.getParameter("userinput"); 
-	  	    //only encode Angle brackets and single quotes
-	  	    userinput = HtmlEncoder.htmlEncodeAngleBracketsAndSingleQuotes(userinput);
-     		out.println("<script language='VBScript'>\n"
-     			+ "Dim customerName\n"
-     			+ "customerName = \"" + userinput + "\"\n" 
-     			+ "Document.Write (\"Welcome \" & customerName)\n"
-     			+ "</script> ");
-	  	    out.flush();
+            String userinput = request.getParameter("userinput"); 
+            //only encode Angle brackets and single quotes
+            userinput = HtmlEncoder.htmlEncodeAngleBracketsAndSingleQuotes(userinput);
+            out.println("<script language='VBScript'>\n"
+                + "Dim customerName\n"
+                + "customerName = \"" + userinput + "\"\n" 
+                + "Document.Write (\"Welcome \" & customerName)\n"
+                + "</script> ");
+            out.flush();
     } catch (Exception e) {
         out.println("Exception details: " + e);
     }

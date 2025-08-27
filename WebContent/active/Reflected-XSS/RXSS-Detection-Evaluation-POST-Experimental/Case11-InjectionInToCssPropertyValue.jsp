@@ -9,26 +9,26 @@
 </head>
 <body>
 <!--
-	Contributed by the IronWASP project (http://ironwasp.org/).
-	Original Author: Lavakumar Kuppan (lava@ironwasp.org).
+    Contributed by the IronWASP project (http://ironwasp.org/).
+    Original Author: Lavakumar Kuppan (lava@ironwasp.org).
 -->
 
 <%
 if (request.getParameter("userinput") == null) {
 %>
-	Enter your input:<br><br>
-	<form name="frmInput" id="frmInput" method="GET">
-		<input type="text" name="userinput" id="userinput"><br>
-		<input type=submit value="submit">
-	</form>
+    Enter your input:<br><br>
+    <form name="frmInput" id="frmInput" method="GET">
+        <input type="text" name="userinput" id="userinput"><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
     try {
-	  	    String userinput = request.getParameter("userinput");
-			userinput = HtmlEncoder.htmlEncodeAngleBrackets(userinput);
-	  	    out.println("<style>\nbody {background-color: " + userinput + ";}\n</style>");
-	  	    out.flush();
+            String userinput = request.getParameter("userinput");
+            userinput = HtmlEncoder.htmlEncodeAngleBrackets(userinput);
+            out.println("<style>\nbody {background-color: " + userinput + ";}\n</style>");
+            out.flush();
     } catch (Exception e) {
         out.println("Exception details: " + e);
     }

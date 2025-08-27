@@ -13,11 +13,11 @@
 <%
 if (request.getParameter("msgid") == null) {
 %>
-	Update Message Number:<br><br>
-	<form name="frmInput" id="frmInput" action="Case09-InjectionInUpdate-Numeric-CommandInjection-With200Errors.jsp" method="POST">
-		<input type="text" name="msgid" id="msgid" value="1"><br>
-		<input type=submit value="submit">
-	</form>
+    Update Message Number:<br><br>
+    <form name="frmInput" id="frmInput" action="Case09-InjectionInUpdate-Numeric-CommandInjection-With200Errors.jsp" method="POST">
+        <input type="text" name="msgid" id="msgid" value="1"><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
@@ -26,15 +26,15 @@ else {
 
   	    System.out.print("Connection Opened Successfully\n");
 
- 	    String SqlString = 
+        String SqlString = 
             "UPDATE messages " +
- 	        "SET message='Hello World' " +
- 	        "WHERE msgid=" + msgid;
- 		Statement stmt = conn.createStatement();
- 		int result = stmt.executeUpdate(SqlString);
- 		 
- 		out.println("Query executed");
-	  	out.flush();
+            "SET message='Hello World' " +
+            "WHERE msgid=" + msgid;
+        Statement stmt = conn.createStatement();
+        int result = stmt.executeUpdate(SqlString);
+         
+        out.println("Query executed");
+        out.flush();
     } catch (Exception e) {
         out.println("Exception details: " + e);
         if(!(e instanceof java.sql.SQLSyntaxErrorException)) {

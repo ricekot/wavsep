@@ -12,23 +12,23 @@
 <%
 if (request.getParameter("userinput") == null) {
 %>
-	Enter your input:<br><br>
-	<form name="frmInput" id="frmInput" action="Case24-Js2ScriptTag.jsp" method="POST">
-		<input type="text" name="userinput" id="userinput"><br>
-		<input type=submit value="submit">
-	</form>
+    Enter your input:<br><br>
+    <form name="frmInput" id="frmInput" action="Case24-Js2ScriptTag.jsp" method="POST">
+        <input type="text" name="userinput" id="userinput"><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {	
     try {
-	  	    String userinput = request.getParameter("userinput"); 
-	  	    //only encode Angle brackets, single quotes and double quotes
-	  	    userinput = HtmlEncoder.htmlEncodeAngleBracketsAndQuotes(userinput);
-     		out.println("<script language='javascript'>\n"
-     			+ "var orderId = " + userinput + ";\n" 
-     			+ " alert('Order Number ' + orderId + ' Was Approved');\n"
-     			+ "</script> ");
-	  	    out.flush();
+            String userinput = request.getParameter("userinput"); 
+            //only encode Angle brackets, single quotes and double quotes
+            userinput = HtmlEncoder.htmlEncodeAngleBracketsAndQuotes(userinput);
+            out.println("<script language='javascript'>\n"
+                + "var orderId = " + userinput + ";\n" 
+                + " alert('Order Number ' + orderId + ' Was Approved');\n"
+                + "</script> ");
+            out.flush();
     } catch (Exception e) {
         out.println("Exception details: " + e);
     }

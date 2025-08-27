@@ -72,7 +72,6 @@ PathType pathType = PathType.HTTP_URL;
 VulnerabilityType vulnerability = VulnerabilityType.RFI;
 
 
-
 //final String URL_TYPE_FTP = "ftp://"; //new URL(new String("ftp://"+user+":"+password+"@"+host+"/"+remotefile+";type=i"));
 //*** Set Default Prefix String ***
 String prefix = ""; //"",[FULLPATH], "http://","file:/","ftp://"
@@ -106,13 +105,13 @@ if (debugMode == true) {
 	String BR = "<BR>";
 	String FontStart = "<B>";
 	String FontEnd = "</B>";
-	
+
 	System.out.println ("File delimiter: " + fileDelimiter);
 	out.println (FontStart + "File delimiter: " + FontEnd + fileDelimiter + BR);
 	System.out.println ("Line delimiter (encoded):" + HtmlEncoder.htmlEncode(lineDelimiter));
 	out.println (FontStart + "Line delimiter (encoded): " + FontEnd 
 			+ HtmlEncoder.htmlEncode(HtmlEncoder.htmlEncode(lineDelimiter)) + BR);
-	
+
 	//User Directory Path - Absolute
 	System.out.println ("User Directory Path (Absolute): " + userPath);
 	out.println (FontStart + "User Directory Path (Absolute): " + FontEnd + userPath + BR);
@@ -137,22 +136,22 @@ if (debugMode == true) {
 	//Full URL:
 	System.out.println("request URL: " + request.getRequestURL());
 	out.println(FontStart + "request URL: " + FontEnd + request.getRequestURL() + BR);
-	
+
 	//System.out.println(request.getRealPath("/"));
-	
+
 	try {
 		System.out.println ("Current directory's canonical path: " 
   			+ directory.getCanonicalPath()); 
 		out.println (FontStart + "Current directory's canonical path: " 
 		    + FontEnd + directory.getCanonicalPath() + BR); 
-	   	System.out.println ("Current directory's absolute path: " 
-	   		+ directory.getAbsolutePath());
-	   	out.println (FontStart + "Current directory's absolute  path: " 
-	   	    + FontEnd + directory.getAbsolutePath() + BR);
+        System.out.println ("Current directory's absolute path: " 
+            + directory.getAbsolutePath());
+        out.println (FontStart + "Current directory's absolute  path: " 
+            + FontEnd + directory.getAbsolutePath() + BR);
 	} catch(Exception e) {
 		System.out.println("Exceptione is =" + e.getMessage());
 	}
-	
+
 	out.println(BR + BR);
 } // end of debug if
 
