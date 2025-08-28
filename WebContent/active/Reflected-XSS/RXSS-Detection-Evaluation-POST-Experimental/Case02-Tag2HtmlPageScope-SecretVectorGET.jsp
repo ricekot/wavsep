@@ -9,29 +9,29 @@
 <body>
 
 <!--
-	Inspired by a vulnerable test case originally written for the OWASP Zed Attack Proxy (ZAP) project
-	(http://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) 
-	Original Author: psiinon (psiinon@gmail.com).
+    Inspired by a vulnerable test case originally written for the OWASP Zed Attack Proxy (ZAP) project
+    (http://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) 
+    Original Author: psiinon (psiinon@gmail.com).
 -->
 
 <%
 if (request.getParameter("userinput") == null) {
 %>
-	Enter your input:<br><br>
-	<form name="frmInput" id="frmInput" method="POST">
-		<input type="text" name="userinput" id="userinput"><br>
-		<input type=submit value="submit">
-	</form>
+    Enter your input:<br><br>
+    <form name="frmInput" id="frmInput" method="POST">
+        <input type="text" name="userinput" id="userinput"><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
     try {
-	  	    String userinput = request.getParameter("userinput"); 
-	  	    
-	  	    if (request.getMethod().equals("GET")) {
-     			out.println("The reflected value: " + userinput);
-	  	    }
-	  	    out.flush();
+            String userinput = request.getParameter("userinput"); 
+            
+            if (request.getMethod().equals("GET")) {
+                out.println("The reflected value: " + userinput);
+            }
+            out.flush();
     } catch (Exception e) {
         out.println("Exception details: " + e);
     }

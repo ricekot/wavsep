@@ -12,20 +12,20 @@
 <body>
 
 <!--
-	Inspired by a vulnerable test case originally written for the OWASP Zed Attack Proxy (ZAP) project
-	(http://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) 
-	Original Author: psiinon (psiinon@gmail.com).
+    Inspired by a vulnerable test case originally written for the OWASP Zed Attack Proxy (ZAP) project
+    (http://www.owasp.org/index.php/OWASP_Zed_Attack_Proxy_Project) 
+    Original Author: psiinon (psiinon@gmail.com).
 -->
 
 <%
 if (request.getParameter("msg") == null || request.getParameter("target") == null ) {
 %>
-	Send a New Message:<br><br>
-	<form name="frmInput" id="frmInput" method="POST">
-		Message Text: <input type="text" name="msg" id="msg" value="readme"><br>
-		Target Email: <input type="text" name="target" id="target" value="a@a.com"><br>
-		<input type=submit value="submit">
-	</form>
+    Send a New Message:<br><br>
+    <form name="frmInput" id="frmInput" method="POST">
+        Message Text: <input type="text" name="msg" id="msg" value="readme"><br>
+        Target Email: <input type="text" name="target" id="target" value="a@a.com"><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
@@ -49,19 +49,19 @@ else {
   	    				   "tblInjection" + tempTableAppendix +
   	    				   "(msg VARCHAR(50),target VARCHAR(100));";
   	    Statement stmt = conn.createStatement();
-		int result = stmt.executeUpdate(SqlString);
-			    
-		//injectable insert (values) statement
-		//can be exploited in several, including deliberate runtime payloads:
-		//'+(select 'b' from users where username='admin')+'
- 	    SqlString = 
- 	    	"INSERT INTO tblInjection" + tempTableAppendix + "(msg,target) " +
- 	    	"VALUES('" + msg + "','" + target + "')";
- 		stmt = conn.createStatement();
- 		result = stmt.executeUpdate(SqlString);
- 		
- 		out.println("Query executed");
-	  	out.flush();
+        int result = stmt.executeUpdate(SqlString);
+                
+        //injectable insert (values) statement
+        //can be exploited in several, including deliberate runtime payloads:
+        //'+(select 'b' from users where username='admin')+'
+        SqlString = 
+            "INSERT INTO tblInjection" + tempTableAppendix + "(msg,target) " +
+            "VALUES('" + msg + "','" + target + "')";
+        stmt = conn.createStatement();
+        result = stmt.executeUpdate(SqlString);
+        
+        out.println("Query executed");
+        out.flush();
     } catch (Exception e) {
         out.println("Exception details: " + e);
         if(!(e instanceof java.sql.SQLSyntaxErrorException)) {

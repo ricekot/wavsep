@@ -527,7 +527,6 @@
   </TABLE>  
   <br>
 
-
 <B><a href="Case13-LFI-FileClass-FilenameContext-Unrestricted-OSPath-DefaultEmptyInput-NoPathReq-Read.jsp">
    Case13-LFI-FileClass-FilenameContext-Unrestricted-OSPath-DefaultEmptyInput-NoPathReq-Read.jsp</a></B><br>
   LFI attack abusing the File class: injection into a filename context, using an unrestricted OS path, default empty input, without full path support (no-path requirement), and in the scope of a page with erroneous responses.<br>
@@ -780,7 +779,6 @@
   </TD></TR>
   </TABLE>  
   <br>
-
 
 <B><a href="Case19-LFI-FileClass-FilenameContext-Unrestricted-OSPath-DefaultEmptyInput-SlashPathReq-Read.jsp">
    Case19-LFI-FileClass-FilenameContext-Unrestricted-OSPath-DefaultEmptyInput-SlashPathReq-Read.jsp</a></B><br>
@@ -1303,7 +1301,6 @@
   </TD></TR>
   </TABLE>  
   <br>
-
 
   <B><a href="Case31-LFI-ContextStream-FilenameContext-Unrestricted-OSPath-DefaultFullInput-SlashPathReq-Read.jsp">
   Case31-LFI-ContextStream-FilenameContext-Unrestricted-OSPath-DefaultFullInput-SlashPathReq-Read.jsp</a></B><br>
@@ -2083,7 +2080,6 @@
   </TABLE>  
   <br>
 
-
   <B><a href="Case49-LFI-ContextStream-FilenameContext-UnixTraversalValidation-OSPath-DefaultFullInput-SlashPathReq-Read.jsp">
   Case49-LFI-ContextStream-FilenameContext-UnixTraversalValidation-OSPath-DefaultFullInput-SlashPathReq-Read.jsp</a></B><br>
   LFI attack abusing the getContextStream servlet method: injection into a filename context, using an OS path with unix traversal validation, default full path input, with slash prefix requirement (no application full path support), and in the scope of a page with erroneous responses.<br>
@@ -2779,7 +2775,6 @@
   </TABLE>  
   <br>
 
-
   <B><a href="Case65-LFI-ContextStream-FilenameContext-UnixTraversalRemoval-OSPath-DefaultFullInput-SlashPathReq-Read.jsp">
   Case65-LFI-ContextStream-FilenameContext-UnixTraversalRemoval-OSPath-DefaultFullInput-SlashPathReq-Read.jsp</a></B><br>
   LFI attack abusing the getContextStream servlet method: injection into a filename context, using an OS path with unix traversal removal, default full path input, with slash prefix requirement (no application full path support), and in the scope of a page with erroneous responses.<br>
@@ -2956,7 +2951,6 @@
   </TD></TR>
   </TABLE>  
   <br>
-
 
 </body>
 </html>

@@ -23,7 +23,7 @@
   MySQL Exploit (NON ANSI Mode) - URL: ',(SELECT '1' FROM information_schema.`TABLES` WHERE TABLE_NAME like'FILES'))--%20 <br>
   MSSQL Exploit (NO Comment) - URL: '%2b(SELECT 'a' FROM sysobjects WHERE name like'sysusers')%2b' <br>
   <br>
- 
+
 
 </body>
 </html>

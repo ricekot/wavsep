@@ -13,14 +13,14 @@
 
 <%
 if (request.getParameter("username") == null
-	&& request.getParameter("password") == null	) {
+    && request.getParameter("password") == null	) {
 %>
-	Login Page:<br><br>
-	<form name="frmInput" id="frmInput" action="Case03-FalsePositiveInjectionInLogin-PsAndIv-200ErrorOnIvFailure.jsp" method="POST">
-		<input type="text" name="username" id="username"><br>
-		<input type="password" name="password" id="password"><br>
-		<input type=submit value="submit">
-	</form>
+    Login Page:<br><br>
+    <form name="frmInput" id="frmInput" action="Case03-FalsePositiveInjectionInLogin-PsAndIv-200ErrorOnIvFailure.jsp" method="POST">
+        <input type="text" name="username" id="username"><br>
+        <input type="password" name="password" id="password"><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
@@ -32,29 +32,29 @@ else {
   	    	throw new Exception("Invalid Input");
   	    }
   	    if (InputValidator.validateAll(password)) {
-	    	throw new Exception("Invalid Input");
-	    }
+            throw new Exception("Invalid Input");
+        }
 
         System.out.print("Connection Opened Successfully\n");
 
- 	    String SqlString = 
+        String SqlString = 
             "SELECT username, password " +
-    	    "FROM users " +
-    	    "WHERE username=? AND password=?";
- 		PreparedStatement pstmt = conn.prepareStatement(SqlString);
- 		pstmt.setString(1,username);
- 		pstmt.setString(2,password);
- 		ResultSet rs = pstmt.executeQuery();
- 		 
- 		if(rs.next()) {
- 			out.println("hello " + rs.getString(1));
- 	    } else {
- 	 		out.println("login failed");
- 	 	}
- 	 	
- 	  	out.flush();
+            "FROM users " +
+            "WHERE username=? AND password=?";
+        PreparedStatement pstmt = conn.prepareStatement(SqlString);
+        pstmt.setString(1,username);
+        pstmt.setString(2,password);
+        ResultSet rs = pstmt.executeQuery();
+         
+        if(rs.next()) {
+            out.println("hello " + rs.getString(1));
+        } else {
+            out.println("login failed");
+        }
+        
+        out.flush();
     } catch (Exception e) {
-    	if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
+        if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
   	        System.out.println("Exception details: " + e);
         } 
 

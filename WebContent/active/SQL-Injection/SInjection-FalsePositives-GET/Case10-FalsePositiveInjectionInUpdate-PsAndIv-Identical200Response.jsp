@@ -14,11 +14,11 @@
 <%
 if (request.getParameter("transactionDate") == null) {
 %>
-	Update The Description of Transactions in the Following Date:<br><br>
-	<form name="frmInput" id="frmInput" action="Case10-FalsePositiveInjectionInUpdate-PsAndIv-Identical200Response.jsp" method="POST">
-		<input type="text" name="transactionDate" id="transactionDate" value="2010-02-02"><br>
-		<input type=submit value="submit">
-	</form>
+    Update The Description of Transactions in the Following Date:<br><br>
+    <form name="frmInput" id="frmInput" action="Case10-FalsePositiveInjectionInUpdate-PsAndIv-Identical200Response.jsp" method="POST">
+        <input type="text" name="transactionDate" id="transactionDate" value="2010-02-02"><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
@@ -27,20 +27,20 @@ else {
   	    
         System.out.print("Connection Opened Successfully\n");
 
- 	    String SqlString = 
+        String SqlString = 
             "UPDATE transactions " +
- 	        "SET description='Hello World' " +
- 	        "WHERE transactionDate=?";
- 		PreparedStatement pstmt = conn.prepareStatement(SqlString);
- 		pstmt.setDate(1,java.sql.Date.valueOf(transactionDate));
- 		int result = pstmt.executeUpdate();
- 		 
- 		out.println("Query executed");
+            "SET description='Hello World' " +
+            "WHERE transactionDate=?";
+        PreparedStatement pstmt = conn.prepareStatement(SqlString);
+        pstmt.setDate(1,java.sql.Date.valueOf(transactionDate));
+        int result = pstmt.executeUpdate();
+         
+        out.println("Query executed");
     } catch (Exception e) {
 
-    	if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
-    	    System.out.println("Exception details: " + e);
-    	} 
+        if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
+            System.out.println("Exception details: " + e);
+        } 
         out.println("Query executed");
     }
 } //end of if/else block

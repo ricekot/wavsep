@@ -11,21 +11,21 @@
 <%
 if (request.getParameter("userinput") == null) {
 %>
-	Enter your input:<br><br>
-	<form name="frmInput" id="frmInput" action="Case30-Tag2HtmlPageScopeMultipleVulnerabilities.jsp" method="POST">
-		<input type="text" name="userinput" id="userinput"><br>
-		<input type="text" name="userinput2" id="userinput2"><br>
-		<input type=submit value="submit">
-	</form>
+    Enter your input:<br><br>
+    <form name="frmInput" id="frmInput" action="Case30-Tag2HtmlPageScopeMultipleVulnerabilities.jsp" method="POST">
+        <input type="text" name="userinput" id="userinput"><br>
+        <input type="text" name="userinput2" id="userinput2"><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
     try {
-	  	    String userinput = request.getParameter("userinput"); 
-	  	    String userinput2 = request.getParameter("userinput2");
-     		out.println("The 1st reflected value: " + userinput);
-     		out.println("The 2nd reflected value: " + userinput2);
-	  	    out.flush();
+            String userinput = request.getParameter("userinput"); 
+            String userinput2 = request.getParameter("userinput2");
+            out.println("The 1st reflected value: " + userinput);
+            out.println("The 2nd reflected value: " + userinput2);
+            out.flush();
     } catch (Exception e) {
         out.println("Exception details: " + e);
     }

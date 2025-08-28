@@ -10,21 +10,20 @@
 </head>
 <body>
 
-
 <%
 if (request.getParameter("username") == null) {
 %>
-	Search Users:<br><br>
-	<form name="frmInput" id="frmInput" action="Case02-InjectionInView-String-Blind-200ValidResponseWithDefaultOnException.jsp" method="POST">
-		<input type="text" name="username" id="username" value="user1"><br>
-		<input type=submit value="submit">
-	</form><br>
-	
-	Search Users:<br><br>
-	<form name="frmInput2" id="frmInput2" action="Case02-InjectionInView-String-Blind-200ValidResponseWithDefaultOnException.jsp" method="POST">
-		<input type="text" name="username" id="username" value="david"><br>
-		<input type=submit value="submit">
-	</form><br>
+    Search Users:<br><br>
+    <form name="frmInput" id="frmInput" action="Case02-InjectionInView-String-Blind-200ValidResponseWithDefaultOnException.jsp" method="POST">
+        <input type="text" name="username" id="username" value="user1"><br>
+        <input type=submit value="submit">
+    </form><br>
+    
+    Search Users:<br><br>
+    <form name="frmInput2" id="frmInput2" action="Case02-InjectionInView-String-Blind-200ValidResponseWithDefaultOnException.jsp" method="POST">
+        <input type="text" name="username" id="username" value="david"><br>
+        <input type=submit value="submit">
+    </form><br>
 <%
 } 
 else {  	    
@@ -32,80 +31,80 @@ else {
     String defaultUserName = null;
     
     try (Connection conn = ConnectionPoolManager.getConnection()) {
-    	String username = request.getParameter("username");
+        String username = request.getParameter("username");
 
         System.out.print("Connection Opened Successfully\n");
         
       //restrict the output presented to the first user output
- 	    String SqlString = 
- 	    	"SELECT userid, username " +
- 	        "FROM users " +
- 	        "WHERE username='user1'";
- 		Statement stmt = conn.createStatement();
+        String SqlString = 
+            "SELECT userid, username " +
+            "FROM users " +
+            "WHERE username='user1'";
+        Statement stmt = conn.createStatement();
         ResultSet rs = stmt.executeQuery(SqlString);
         
-		while(rs.next()) {
-			defaultUserId = rs.getLong(1);
-			defaultUserName = rs.getString(2);
- 	    } 
-		
- 		out.println("The list of users:");
- 		out.println("<TABLE>"); 		
- 		out.println("<TR>");
-		out.println("<TD>");
-		out.println("<B>");
-		out.println("UserId");
-		out.println("</B>");
-		out.println("</TD>");
-		out.println("<TD>");
-		out.println("<B>");
-		out.println("UserName");
-		out.println("</B>");
-		out.println("</TD>");
-		out.println("</TR>");
-		
-		//restrict the output presented to the first user output
- 	    SqlString = 
- 	    	"SELECT userid, username " +
- 	        "FROM users " +
- 	        "WHERE username='" + username + "'";
- 		stmt = conn.createStatement();
+        while(rs.next()) {
+            defaultUserId = rs.getLong(1);
+            defaultUserName = rs.getString(2);
+        } 
+        
+        out.println("The list of users:");
+        out.println("<TABLE>"); 		
+        out.println("<TR>");
+        out.println("<TD>");
+        out.println("<B>");
+        out.println("UserId");
+        out.println("</B>");
+        out.println("</TD>");
+        out.println("<TD>");
+        out.println("<B>");
+        out.println("UserName");
+        out.println("</B>");
+        out.println("</TD>");
+        out.println("</TR>");
+        
+        //restrict the output presented to the first user output
+        SqlString = 
+            "SELECT userid, username " +
+            "FROM users " +
+            "WHERE username='" + username + "'";
+        stmt = conn.createStatement();
         rs = stmt.executeQuery(SqlString);
         
- 		while(rs.next()) {
- 			
- 		    out.println("<TR>");
- 		    out.println("<TD>");
- 			out.println(rs.getLong(1));
- 			out.println("</TD>");
- 		    out.println("<TD>");
- 			out.println(rs.getString(2));
- 			out.println("</TD>");
- 			out.println("</TR>");
- 	    } 
- 		out.println("</TABLE>");
- 	 	
-	  	out.flush();
-	  	
-	  	
+        while(rs.next()) {
+            
+            out.println("<TR>");
+            out.println("<TD>");
+            out.println(rs.getLong(1));
+            out.println("</TD>");
+            out.println("<TD>");
+            out.println(rs.getString(2));
+            out.println("</TD>");
+            out.println("</TR>");
+        } 
+        out.println("</TABLE>");
+        
+        out.flush();
+        
+        
     } catch (Exception e) {
-		out.println("<TR>");
- 		out.println("<TD>");
- 		out.println(defaultUserId);
- 		out.println("</TD>");
- 		out.println("<TD>");
- 		out.println(defaultUserName);
- 		out.println("</TD>");
- 		out.println("</TR>");
-    	out.println("</TABLE>");
-    	
-    	if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
+        out.println("<TR>");
+        out.println("<TD>");
+        out.println(defaultUserId);
+        out.println("</TD>");
+        out.println("<TD>");
+        out.println(defaultUserName);
+        out.println("</TD>");
+        out.println("</TR>");
+        out.println("</TABLE>");
+        
+        if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
   	        System.out.println("Exception details: " + e);
         } 
 
-    	
+        
     }
- 	 	
+        
 } //end of if/else block
 %>
 

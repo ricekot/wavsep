@@ -11,26 +11,26 @@
 <%
 if (request.getParameter("userinput") == null) {
 %>
-	Enter your input:<br><br>
-	<form name="frmInput" id="frmInput" action="Case31-Tag2HtmlPageScopeDuringException.jsp" method="POST">
-		<input type="text" name="userinput" id="userinput"><br>
-		<input type=submit value="submit">
-	</form>
+    Enter your input:<br><br>
+    <form name="frmInput" id="frmInput" action="Case31-Tag2HtmlPageScopeDuringException.jsp" method="POST">
+        <input type="text" name="userinput" id="userinput"><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
     try {
-	  	    String userinput = request.getParameter("userinput");
-	  	    if (userinput.contains("'")) {
-	  	    	throw new Exception("The value "
-	  	    		+ userinput + " is invalid");
-	  	    }
-	  	    out.println("The value is valid");
-	    	out.flush();
-	  	    
+            String userinput = request.getParameter("userinput");
+            if (userinput.contains("'")) {
+                throw new Exception("The value "
+                    + userinput + " is invalid");
+            }
+            out.println("The value is valid");
+            out.flush();
+            
     } catch (Exception e) {
-    	//response.sendError(500,"Exception details: " + e);
-    	out.println("Exception details: " + e);
+        //response.sendError(500,"Exception details: " + e);
+        out.println("Exception details: " + e);
     }
 } //end of if/else block
 %>

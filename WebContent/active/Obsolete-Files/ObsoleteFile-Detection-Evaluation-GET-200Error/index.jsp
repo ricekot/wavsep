@@ -12,7 +12,7 @@
 
 <%
  String baseURL = FileConstants.HTTP_PREFIX + request.getServerName() + ":" + request.getServerPort() 
- 				  + request.getContextPath() + (contextRelativeDirPath.replace("index.jsp",""));
+                  + request.getContextPath() + (contextRelativeDirPath.replace("index.jsp",""));
  String baseUrlWithoutProtocol = request.getServerName() + ":" + request.getServerPort() 
   				  + request.getContextPath() + (contextRelativeDirPath.replace("index.jsp",""));
 %>
@@ -32,7 +32,7 @@
   <TD><U><B>OS</B></U></TD>
   <TD><U><B>Description</B></U></TD>
   </TR>
- 
+
   <TR>
   <TD bgcolor='#1AC6FF'><B>Case 1</B></TD>
   <TD><B>Login (copy)</B></TD>
@@ -216,7 +216,6 @@
   </TABLE>
   <BR>
 
-
   
   <H2>Archive Files</H2>
   
@@ -231,7 +230,7 @@
   <TD><U><B>Compression/OS</B></U></TD>
   <TD><U><B>Description</B></U></TD>
   </TR>
- 
+
   <TR>
   <TD bgcolor='#1AC6FF'><B>Case 19</B></TD>
   <TD><B>Login.jsp</B></TD>
@@ -432,7 +431,7 @@
   <TD><U><B>Compression/OS</B></U></TD>
   <TD><U><B>Description</B></U></TD>
   </TR>
- 
+
   <TR>
   <TD bgcolor='#1AC6FF'><B>Case 40</B></TD>
   <TD><B>private</B></TD>
@@ -848,7 +847,7 @@
   This section <b>intentionally</b> focuses only on the simplest <b>Java</b> spcific poentaily non-executable extensions.<BR>
   These files might (if there is some sort of mis-configuration) allow attackers to download the source code stored within them.<br>
   <br>  
- 
+
   <a href="private/inner.jsp">File III: inner.jsp</a><br><br>
   
   <TABLE border=1 cellspacing=0 cellpadding=2>

@@ -7,17 +7,16 @@
 <title>Case 5 - RXSS via frame tag injection into the scope of an HTML frameset</title>
 </head>
 
-
 <%
 if (request.getParameter("userinput") == null) {
 %>
     <body>
-	Enter your input:<br><br>
-	<form name="frmInput" id="frmInput" action="Case05-Tag2Frameset.jsp" method="POST">
-		<input type="text" name="userinput" id="userinput"><br>
-		<input type=submit value="submit">
-	</form>
-	</body>
+    Enter your input:<br><br>
+    <form name="frmInput" id="frmInput" action="Case05-Tag2Frameset.jsp" method="POST">
+        <input type="text" name="userinput" id="userinput"><br>
+        <input type=submit value="submit">
+    </form>
+    </body>
 <%
 } 
 else {
@@ -26,10 +25,10 @@ else {
 <frame name="frame1" id="frame1" src="dummy.html">
 <%	
     try {
-	  	    String userinput = request.getParameter("userinput"); 
-     		out.println("<frame name=\"frame2\" id=\"frame2\" src=\""
-     			+ userinput +"\"> ");
-	  	    out.flush();
+            String userinput = request.getParameter("userinput"); 
+            out.println("<frame name=\"frame2\" id=\"frame2\" src=\""
+                + userinput +"\"> ");
+            out.flush();
     } catch (Exception e) {
         out.println("Exception details: " + e);
     }

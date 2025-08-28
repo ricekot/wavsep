@@ -13,14 +13,14 @@
 
 <%
 if (request.getParameter("username") == null
-	&& request.getParameter("password") == null	) {
+    && request.getParameter("password") == null	) {
 %>
-	Login Page:<br><br>
-	<form name="frmInput" id="frmInput" action="Case04-FalsePositiveInjectionInLogin-PsAndIv-200SyntaxErrorOnIvFailure.jsp" method="POST">
-		<input type="text" name="username" id="username"><br>
-		<input type="password" name="password" id="password"><br>
-		<input type=submit value="submit">
-	</form>
+    Login Page:<br><br>
+    <form name="frmInput" id="frmInput" action="Case04-FalsePositiveInjectionInLogin-PsAndIv-200SyntaxErrorOnIvFailure.jsp" method="POST">
+        <input type="text" name="username" id="username"><br>
+        <input type="password" name="password" id="password"><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
@@ -32,40 +32,40 @@ else {
   	    	throw new SQLException("Invalid Input for SQL");
   	    }
   	    if (InputValidator.validateAll(password)) {
-	    	throw new SQLException("Invalid Input for SQL");
-	    }
+            throw new SQLException("Invalid Input for SQL");
+        }
 
         System.out.print("Connection Opened Successfully\n");
 
- 	    String SqlString = 
+        String SqlString = 
             "SELECT username, password " +
-    	    "FROM users " +
-    	    "WHERE username=? AND password=?";
- 		PreparedStatement pstmt = conn.prepareStatement(SqlString);
- 		pstmt.setString(1,username);
- 		pstmt.setString(2,password);
- 		ResultSet rs = pstmt.executeQuery();
- 		 
- 		if(rs.next()) {
- 			out.println("hello " + rs.getString(1));
- 	    } else {
- 	 		out.println("login failed");
- 	 	}
- 	 	
- 	  	out.flush();
-	  	
+            "FROM users " +
+            "WHERE username=? AND password=?";
+        PreparedStatement pstmt = conn.prepareStatement(SqlString);
+        pstmt.setString(1,username);
+        pstmt.setString(2,password);
+        ResultSet rs = pstmt.executeQuery();
+         
+        if(rs.next()) {
+            out.println("hello " + rs.getString(1));
+        } else {
+            out.println("login failed");
+        }
+        
+        out.flush();
+        
     } catch (SQLException e) {
-    	if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
+        if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
   	        System.out.println("Exception details: " + e);
         } 
 
         out.println("Exception details: " + e);
     } catch (Exception e) {
-    	if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
+        if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
   	        System.out.println("Exception details: " + e);
         } 
 
-    	out.println("Exception details: " + e);
+        out.println("Exception details: " + e);
     }
 } //end of if/else block
 %>

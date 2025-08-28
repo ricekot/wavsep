@@ -13,11 +13,11 @@
 <%
 if (request.getParameter("msg") == null) {
 %>
-	Update Your Message:<br><br>
-	<form name="frmInput" id="frmInput" action="Case04-InjectionInUpdate-String-CommandInjection-WithErrors.jsp" method="POST">
-		<input type="text" name="msg" id="msg"><br>
-		<input type=submit value="submit">
-	</form>
+    Update Your Message:<br><br>
+    <form name="frmInput" id="frmInput" action="Case04-InjectionInUpdate-String-CommandInjection-WithErrors.jsp" method="POST">
+        <input type="text" name="msg" id="msg"><br>
+        <input type=submit value="submit">
+    </form>
 <%
 } 
 else {
@@ -26,17 +26,17 @@ else {
 
         System.out.print("Connection Opened Successfully\n");
 
- 	    String SqlString = 
+        String SqlString = 
             "UPDATE messages " +
- 	        "SET message='" + msg + "' " +
- 	        "WHERE msgid=1";
- 		Statement stmt = conn.createStatement();
- 		int result = stmt.executeUpdate(SqlString);
- 		 
- 		out.println("Query executed");
-	  	out.flush();
-	  	
-	  	
+            "SET message='" + msg + "' " +
+            "WHERE msgid=1";
+        Statement stmt = conn.createStatement();
+        int result = stmt.executeUpdate(SqlString);
+         
+        out.println("Query executed");
+        out.flush();
+        
+        
     } catch (Exception e) {
         response.sendError(500,"Exception details: " + e);
         

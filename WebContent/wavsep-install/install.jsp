@@ -48,20 +48,20 @@ if (request.getParameter("username") == null
 	int port = 0;
 	String wavsepUsername = request.getParameter("wavsep_username");
 	String wavsepPassword = request.getParameter("wavsep_password");
-	
+
 	//constant, for now
 	String wavsepDB = "wavsepDB";
-	
+
 	try {
 		port = Integer.parseInt(request.getParameter("port"));
 	} catch (Exception e){throw e;}
-	
+
 	if(username == null || password == null || host == null || port == 0) {
 		installFlag = 0;
 	} else if(username.length() == 0 || password.length() == 0 || host.length() == 0 || port <= 0){
 		installFlag = 0;
 	}
-	
+
 	if(wavsepUsername == null || wavsepPassword == null) {
 		wavsepUsername = "wavsep";
 		wavsepPassword = "wavsepPass782";
@@ -72,9 +72,9 @@ if (request.getParameter("username") == null
 	} else {
 		//leave the user's choices of wavsep username & password intact
 	}
-	
-	
-	
+
+
+
 	//******************************************************
 	//** Derby Installation - MySQL Configuration Storage **
 	//******************************************************
@@ -96,15 +96,15 @@ if (request.getParameter("username") == null
 	} catch (Exception e) {
 		out.println(e.toString());
 	}
-	
+
 	//Variable Decleration
 	Connection conn = null;
 	String SqlString = null;
 	String SqlString2 = null;
 	PreparedStatement pstmt = null;
 	int result = 0;
-	
-	
+
+
 	try {
 		conn = ConnectionPoolManager.getDerbyConnection();
 		
@@ -156,18 +156,18 @@ if (request.getParameter("username") == null
 		conn.close();
 		
 		conn = null;
-	
-	
+
+
 	//*********************************
 	//** MySQL Database Installation **
 	//*********************************
 	    if (installFlag == 1) {
 		
-	    	out.println("<u><b>Installing mysql database (WAVSEP data storage)</b></u><br>");
-	    	
+        out.println("<u><b>Installing mysql database (WAVSEP data storage)</b></u><br>");
+        
 		    String rootConnectionString =
-        	    "jdbc:mysql://" + host + ":" + port +
-        	    "/information_schema?user=" + username + "&password=" + password;
+                "jdbc:mysql://" + host + ":" + port +
+                "/information_schema?user=" + username + "&password=" + password;
 		
 		    /* Load the MySQL driver */
 	        String driver = DatabaseConstants.DATABASE_DRIVER;
@@ -202,14 +202,14 @@ if (request.getParameter("username") == null
 			
 		 	//close connections in order to switch DB without using the "use" clause
 		 	try {
-        		conn.close();
+                conn.close();
 		 	} catch(Exception err){}
 		 
 		 	//reconnect to the wavsep database that was just created
 		 	rootConnectionString =
-        	    "jdbc:mysql://" + host + ":" + port +
-        	    "/" + wavsepDB + 
-        	    "?user=" + username + "&password=" + password;
+                "jdbc:mysql://" + host + ":" + port +
+                "/" + wavsepDB + 
+                "?user=" + username + "&password=" + password;
 		
 		 	/* Load the MySQL driver */
 	        driver = DatabaseConstants.DATABASE_DRIVER;
@@ -548,7 +548,7 @@ if (request.getParameter("username") == null
 		 	
 		 	//close connections in order to use the derby DB again
 		 	try {
-        		conn.close();
+                conn.close();
 		 	} catch(Exception err){}
 		 	
 		 	
@@ -594,18 +594,18 @@ if (request.getParameter("username") == null
 		out.flush();
 		
 		if(conn != null) {
-	    	ConnectionPoolManager.closeConnection(conn);
+        ConnectionPoolManager.closeConnection(conn);
 	    }
 	} catch (Exception e) {
 		if(conn != null) {
 			ConnectionPoolManager.closeConnection(conn);
-   		}
+        }
 		
 		throw e;
 	} //end of try-catch block
-	
+
 }
-	
+
 %>
 
 </body>

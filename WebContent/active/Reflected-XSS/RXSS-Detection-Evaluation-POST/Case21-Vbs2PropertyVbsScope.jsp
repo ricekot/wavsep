@@ -8,17 +8,16 @@
 <title>Case 21 - RXSS via VBScript injection into the scope of VBScript code within a property (Single Quote String Delimiter)</title>
 </head>
 
-
 <%
 if (request.getParameter("userinput") == null) {
 %>
     <body>
-	Enter your input:<br><br>
-	<form name="frmInput" id="frmInput" action="Case21-Vbs2PropertyVbsScope.jsp" method="POST">
-		<input type="text" name="userinput" id="userinput"><br>
-		<input type=submit value="submit">
-	</form>
-	</body>
+    Enter your input:<br><br>
+    <form name="frmInput" id="frmInput" action="Case21-Vbs2PropertyVbsScope.jsp" method="POST">
+        <input type="text" name="userinput" id="userinput"><br>
+        <input type=submit value="submit">
+    </form>
+    </body>
 <%
 } 
 else {
@@ -27,12 +26,12 @@ else {
 <frame name="frame1" id="frame1" src="dummy.html">
 <%	
     try {
-	  	    String userinput = request.getParameter("userinput"); 
-	  	    //only encode Angle brackets and double quotes
-	  	    userinput = HtmlEncoder.htmlEncodeAngleBracketsAndQuotes(userinput);
-	  	    out.println("<frame name='frame2' id='frame2' src='VBScript: \n"
-       			+ "Document.Write (\"Welcome Mr. \" & " + userinput + ")\n'> ");
-	  	    out.flush();
+            String userinput = request.getParameter("userinput"); 
+            //only encode Angle brackets and double quotes
+            userinput = HtmlEncoder.htmlEncodeAngleBracketsAndQuotes(userinput);
+            out.println("<frame name='frame2' id='frame2' src='VBScript: \n"
+                + "Document.Write (\"Welcome Mr. \" & " + userinput + ")\n'> ");
+            out.flush();
     } catch (Exception e) {
         out.println("Exception details: " + e);
     }
