@@ -30,13 +30,14 @@ else {
             "UPDATE transactions " +
             "SET description='Hello World' " +
             "WHERE transactionDate='" + transactionDate + "'";
-        Statement stmt = conn.createStatement();
-        int result = stmt.executeUpdate(SqlString);
+        try (Statement stmt = conn.createStatement()) {
+            int result = stmt.executeUpdate(SqlString);
          
-        out.println("Query executed");
-        out.flush();
+            out.println("Query executed");
+            out.flush();
         
         
+        }
     } catch (Exception e) {
         response.sendError(500,"Exception details: " + e);
         

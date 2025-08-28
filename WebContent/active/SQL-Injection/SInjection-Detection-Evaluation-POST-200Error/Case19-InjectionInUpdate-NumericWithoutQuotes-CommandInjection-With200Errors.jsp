@@ -35,11 +35,12 @@ else {
                 "UPDATE messages " +
                 "SET message='Hello World' " +
                 "WHERE msgid=" + msgid;
-            Statement stmt = conn.createStatement();
-            int result = stmt.executeUpdate(SqlString);
+            try (Statement stmt = conn.createStatement()) {
+                int result = stmt.executeUpdate(SqlString);
          
-            out.println("Query executed");
+                out.println("Query executed");
         
+            }
   	    }
         out.flush();
     } catch (Exception e) {

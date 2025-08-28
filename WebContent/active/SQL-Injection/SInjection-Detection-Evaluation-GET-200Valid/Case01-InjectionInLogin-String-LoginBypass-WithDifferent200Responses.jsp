@@ -34,17 +34,18 @@ else {
             "FROM users " +
             "WHERE username='" + username + "'" +
             " AND password='" + password + "'";
-        Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery(SqlString);
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(SqlString);
          
-        if(rs.next()) {
-            out.println("hello " + rs.getString(1));
-        } else {
-            out.println("login failed");
+            if(rs.next()) {
+                out.println("hello " + rs.getString(1));
+            } else {
+                out.println("login failed");
+            }
+        
+            out.flush();
+        
         }
-        
-        out.flush();
-        
     } catch (Exception e) {
         out.println("Information is unavailable");
         

@@ -8,6 +8,9 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Changed
 - Main JSP to use leading spaces instead of a mix of spaces and tabs - to make refactoring easier. 
 
+### Fixed
+- Changed all of the SQL JSPs to use try-with-resources on the db statement.
+
 ## 2025-08-27
 
 ### Fixed

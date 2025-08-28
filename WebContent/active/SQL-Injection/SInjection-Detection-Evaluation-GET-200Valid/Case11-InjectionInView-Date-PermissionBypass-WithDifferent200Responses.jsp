@@ -33,55 +33,56 @@ else {
             "FROM transactions " +
             "WHERE transactionDate='" + date + "'" +
             " AND userId=" + currentUserId;
-        Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery(SqlString);
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(SqlString);
         
-        out.println("The list of transactions:");
-        out.println("<TABLE>"); 		
-        out.println("<TR>");
-        out.println("<TD>");
-        out.println("<B>");
-        out.println("transactionId");
-        out.println("</B>");
-        out.println("</TD>");
-        out.println("<TD>");
-        out.println("<B>");
-        out.println("sum");
-        out.println("</B>");
-        out.println("</TD>");
-        out.println("<TD>");
-        out.println("<B>");
-        out.println("description");
-        out.println("</B>");
-        out.println("</TD>");
-        out.println("<TD>");
-        out.println("<B>");
-        out.println("transactionDate");
-        out.println("</B>");
-        out.println("</TD>");
-        out.println("</TR>");
-        
-        while(rs.next()) {
-            
+            out.println("The list of transactions:");
+            out.println("<TABLE>"); 		
             out.println("<TR>");
             out.println("<TD>");
-            out.println(rs.getLong(1));
+            out.println("<B>");
+            out.println("transactionId");
+            out.println("</B>");
             out.println("</TD>");
             out.println("<TD>");
-            out.println(rs.getLong(2));
+            out.println("<B>");
+            out.println("sum");
+            out.println("</B>");
             out.println("</TD>");
             out.println("<TD>");
-            out.println(rs.getString(3));
+            out.println("<B>");
+            out.println("description");
+            out.println("</B>");
             out.println("</TD>");
             out.println("<TD>");
-            out.println(rs.getDate(4));
+            out.println("<B>");
+            out.println("transactionDate");
+            out.println("</B>");
             out.println("</TD>");
             out.println("</TR>");
-        } 
-        out.println("</TABLE>");
         
-        out.flush();
+            while(rs.next()) {
+            
+                out.println("<TR>");
+                out.println("<TD>");
+                out.println(rs.getLong(1));
+                out.println("</TD>");
+                out.println("<TD>");
+                out.println(rs.getLong(2));
+                out.println("</TD>");
+                out.println("<TD>");
+                out.println(rs.getString(3));
+                out.println("</TD>");
+                out.println("<TD>");
+                out.println(rs.getDate(4));
+                out.println("</TD>");
+                out.println("</TR>");
+            } 
+            out.println("</TABLE>");
         
+            out.flush();
+        
+        }
     } catch (Exception e) {
         out.println("Information is unavailable");
         

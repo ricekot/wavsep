@@ -31,9 +31,10 @@ else {
             "UPDATE transactions " +
             "SET description='Hello World' " +
             "WHERE transactionDate=?";
-        PreparedStatement pstmt = conn.prepareStatement(SqlString);
-        pstmt.setDate(1,java.sql.Date.valueOf(transactionDate));
-        int result = pstmt.executeUpdate();
+        try (PreparedStatement pstmt = conn.prepareStatement(SqlString)) {
+            pstmt.setDate(1,java.sql.Date.valueOf(transactionDate));
+            int result = pstmt.executeUpdate();
+        }
          
         out.println("Query executed");
     } catch (Exception e) {
