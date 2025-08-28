@@ -35,17 +35,18 @@ else {
             "FROM users " +
             "WHERE aab username=?" +
             " AND password=?";
-        PreparedStatement pstmt = conn.prepareStatement(SqlString);
-        pstmt.setString(1,username);
-        pstmt.setString(2,password);
-        //error: since the syntax contain invalid characters
-        //AND since the method is executed with the SqlString parameter
-        ResultSet rs = pstmt.executeQuery(SqlString); 
+        try (PreparedStatement pstmt = conn.prepareStatement(SqlString)) {
+            pstmt.setString(1,username);
+            pstmt.setString(2,password);
+            //error: since the syntax contain invalid characters
+            //AND since the method is executed with the SqlString parameter
+            ResultSet rs = pstmt.executeQuery(SqlString); 
          
-        if(rs.next()) {
-            out.println("hello " + rs.getString(1));
-        } else {
-            out.println("login failed");
+            if(rs.next()) {
+                out.println("hello " + rs.getString(1));
+            } else {
+                out.println("login failed");
+            }
         }
         
         out.flush();

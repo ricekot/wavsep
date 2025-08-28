@@ -41,15 +41,16 @@ else {
             "SELECT username, password " +
             "FROM users " +
             "WHERE username=? AND password=?";
-        PreparedStatement pstmt = conn.prepareStatement(SqlString);
-        pstmt.setString(1,username);
-        pstmt.setString(2,password);
-        ResultSet rs = pstmt.executeQuery();
-         
-        if(rs.next()) {
-            out.println("hello " + rs.getString(1));
-        } else {
-            out.println("login failed");
+        try (PreparedStatement pstmt = conn.prepareStatement(SqlString)) {
+            pstmt.setString(1,username);
+            pstmt.setString(2,password);
+            ResultSet rs = pstmt.executeQuery();
+             
+            if(rs.next()) {
+                out.println("hello " + rs.getString(1));
+            } else {
+                out.println("login failed");
+            }
         }
         
         out.flush();

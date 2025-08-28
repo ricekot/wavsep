@@ -40,53 +40,53 @@ else {
             "SELECT userid, username " +
             "FROM users " +
             "WHERE username='user1'";
-        Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery(SqlString);
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(SqlString);
         
-        while(rs.next()) {
-            defaultUserId = rs.getLong(1);
-            defaultUserName = rs.getString(2);
-        } 
+            while(rs.next()) {
+                defaultUserId = rs.getLong(1);
+                defaultUserName = rs.getString(2);
+            } 
         
-        out.println("The list of users:");
-        out.println("<TABLE>"); 		
-        out.println("<TR>");
-        out.println("<TD>");
-        out.println("<B>");
-        out.println("UserId");
-        out.println("</B>");
-        out.println("</TD>");
-        out.println("<TD>");
-        out.println("<B>");
-        out.println("UserName");
-        out.println("</B>");
-        out.println("</TD>");
-        out.println("</TR>");
-        
-        //restrict the output presented to the first user output
-        SqlString = 
-            "SELECT userid, username " +
-            "FROM users " +
-            "WHERE username='" + username + "'";
-        stmt = conn.createStatement();
-        rs = stmt.executeQuery(SqlString);
-        
-        while(rs.next()) {
-            
+            out.println("The list of users:");
+            out.println("<TABLE>"); 		
             out.println("<TR>");
             out.println("<TD>");
-            out.println(rs.getLong(1));
+            out.println("<B>");
+            out.println("UserId");
+            out.println("</B>");
             out.println("</TD>");
             out.println("<TD>");
-            out.println(rs.getString(2));
+            out.println("<B>");
+            out.println("UserName");
+            out.println("</B>");
             out.println("</TD>");
             out.println("</TR>");
-        } 
-        out.println("</TABLE>");
         
-        out.flush();
+            //restrict the output presented to the first user output
+            SqlString = 
+                "SELECT userid, username " +
+                "FROM users " +
+                "WHERE username='" + username + "'";
+            rs = stmt.executeQuery(SqlString);
+        
+            while(rs.next()) {
+            
+                out.println("<TR>");
+                out.println("<TD>");
+                out.println(rs.getLong(1));
+                out.println("</TD>");
+                out.println("<TD>");
+                out.println(rs.getString(2));
+                out.println("</TD>");
+                out.println("</TR>");
+            } 
+            out.println("</TABLE>");
+        
+            out.flush();
         
         
+        }
     } catch (Exception e) {
         out.println("<TR>");
         out.println("<TD>");

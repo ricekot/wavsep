@@ -42,55 +42,55 @@ else {
             "FROM transactions " +
             "WHERE transactionDate='2010-01-01' " +
             "LIMIT 1";
-        Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery(SqlString);
+        try (Statement stmt = conn.createStatement()) {
+            ResultSet rs = stmt.executeQuery(SqlString);
         
-        while(rs.next()) {
-            defaultTransId = rs.getLong(1);
-            defaultTransSum = rs.getLong(2);
-        } 
+            while(rs.next()) {
+                defaultTransId = rs.getLong(1);
+                defaultTransSum = rs.getLong(2);
+            } 
         
-        out.println("The list of transactions:");
-        out.println("<TABLE>"); 		
-        out.println("<TR>");
-        out.println("<TD>");
-        out.println("<B>");
-        out.println("transactionId");
-        out.println("</B>");
-        out.println("</TD>");
-        out.println("<TD>");
-        out.println("<B>");
-        out.println("Sum");
-        out.println("</B>");
-        out.println("</TD>");
-        out.println("</TR>");
-        
-        //restrict the output presented to the first user output
-        SqlString = 
-            "SELECT transactionId, sum " +
-            "FROM transactions " +
-            "WHERE transactionDate='" + transactionDate + "' " +
-            "LIMIT 1";
-
-        stmt = conn.createStatement();
-        rs = stmt.executeQuery(SqlString);
-        
-        while(rs.next()) {
-            
+            out.println("The list of transactions:");
+            out.println("<TABLE>"); 		
             out.println("<TR>");
             out.println("<TD>");
-            out.println(rs.getLong(1));
+            out.println("<B>");
+            out.println("transactionId");
+            out.println("</B>");
             out.println("</TD>");
             out.println("<TD>");
-            out.println(rs.getLong(2));
+            out.println("<B>");
+            out.println("Sum");
+            out.println("</B>");
             out.println("</TD>");
             out.println("</TR>");
-        } 
-        out.println("</TABLE>");
         
-        out.flush();
+            //restrict the output presented to the first user output
+            SqlString = 
+                "SELECT transactionId, sum " +
+                "FROM transactions " +
+                "WHERE transactionDate='" + transactionDate + "' " +
+                "LIMIT 1";
+
+            rs = stmt.executeQuery(SqlString);
+        
+            while(rs.next()) {
+            
+                out.println("<TR>");
+                out.println("<TD>");
+                out.println(rs.getLong(1));
+                out.println("</TD>");
+                out.println("<TD>");
+                out.println(rs.getLong(2));
+                out.println("</TD>");
+                out.println("</TR>");
+            } 
+            out.println("</TABLE>");
+        
+            out.flush();
         
         
+        }
     } catch (Exception e) {
         out.println("<TR>");
         out.println("<TD>");

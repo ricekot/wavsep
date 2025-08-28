@@ -48,20 +48,20 @@ else {
   	    String SqlString = "CREATE TEMPORARY TABLE IF NOT EXISTS " +
   	    				   "tblInjection" + tempTableAppendix +
   	    				   "(msg VARCHAR(50),target VARCHAR(100));";
-  	    Statement stmt = conn.createStatement();
-        int result = stmt.executeUpdate(SqlString);
+       try (Statement stmt = conn.createStatement()) {
+            int result = stmt.executeUpdate(SqlString);
                 
-        //injectable insert (values) statement
-        //can be exploited in several, including deliberate runtime payloads:
-        //'+(select 'b' from users where username='admin')+'
-        SqlString = 
-            "INSERT INTO tblInjection" + tempTableAppendix + "(msg,target) " +
-            "VALUES('" + msg + "','" + target + "')";
-        stmt = conn.createStatement();
-        result = stmt.executeUpdate(SqlString);
+            //injectable insert (values) statement
+            //can be exploited in several, including deliberate runtime payloads:
+            //'+(select 'b' from users where username='admin')+'
+            SqlString = 
+                "INSERT INTO tblInjection" + tempTableAppendix + "(msg,target) " +
+                "VALUES('" + msg + "','" + target + "')";
+            result = stmt.executeUpdate(SqlString);
         
-        out.println("Query executed");
-        out.flush();
+            out.println("Query executed");
+            out.flush();
+       }
     } catch (Exception e) {
         out.println("Exception details: " + e);
         if(!(e instanceof java.sql.SQLSyntaxErrorException)) {
