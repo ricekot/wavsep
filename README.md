@@ -8,6 +8,13 @@ WAVSEP is a vulnerable web application designed to help assessing the features, 
 
 This evaluation platform contains a collection of unique vulnerable web pages that can be used to test the various properties of web application scanners.
 
+### Reinforced Wavsep
+
+This fork also includes the following tests added to [Reinforced Wavsep](https://github.com/luigiurbano/Reinforced-Wavsep)
+
+* OS Command Injection
+* XML External Entity 
+
 ## Building
 
 WAVSEP can be run in one standalone Docker container.
