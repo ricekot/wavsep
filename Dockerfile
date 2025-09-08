@@ -16,7 +16,7 @@ RUN apt-get update && apt-get install -y \
 ENV CATALINA_HOME=/opt/tomcat
 ENV PATH=$CATALINA_HOME/bin:$PATH
 
-ENV TOMCAT_VERSION=9.0.108
+ENV TOMCAT_VERSION=9.0.109
 RUN wget https://downloads.apache.org/tomcat/tomcat-9/v${TOMCAT_VERSION}/bin/apache-tomcat-${TOMCAT_VERSION}.tar.gz \
     && mkdir -p /opt/tomcat \
     && tar xzvf apache-tomcat-${TOMCAT_VERSION}.tar.gz -C /opt/tomcat --strip-components=1 \
